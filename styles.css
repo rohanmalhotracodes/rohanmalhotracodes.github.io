@@ -362,3 +362,10 @@ html{scroll-padding-top:110px}
 @media(max-width:350px){
   .form-pair,.contact-panels{grid-template-columns:1fr}
 }
+
+/* Keep project artwork and borders stable on hover */
+.project-card:hover{transform:none;box-shadow:7px 7px 0 var(--shadow);outline:2px solid var(--ink);outline-offset:-2px}
+.project-card:hover .project-copy i{border-color:var(--ink);background:var(--ink);color:var(--paper)}
+.project-card figure.omnisprint-banner{padding:18px 24px}
+.project-card figure.omnisprint-banner img{width:72%!important;height:auto!important;max-height:92%!important;object-fit:contain!important}
+@media(max-width:760px){.project-card figure.omnisprint-banner img{width:84%!important}}
