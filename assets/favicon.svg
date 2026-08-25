@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <title>Rohan Malhotra terminal mark</title>
+  <rect width="64" height="64" rx="7" fill="#050505"/>
+  <path d="m15 19 14 13-14 13" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="square" stroke-linejoin="miter"/>
+  <path d="M33 45h16" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="square"/>
+</svg>
