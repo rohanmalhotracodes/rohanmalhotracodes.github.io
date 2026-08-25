@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <title>Coral Protocol</title>
+  <rect width="64" height="64" rx="7" fill="#1aa99f"/>
+  <circle cx="32" cy="32" r="21" fill="none" stroke="#fff" stroke-width="7"/>
+  <g fill="#fff" stroke="#fff" stroke-width="2.6" stroke-linecap="round">
+    <path d="M32 48V29M32 40 22 29M32 38l10-13" fill="none"/>
+    <circle cx="21" cy="27" r="4.3" stroke="none"/>
+    <circle cx="43" cy="23" r="4.3" stroke="none"/>
+    <circle cx="32" cy="28" r="4.3" stroke="none"/>
+  </g>
+</svg>
