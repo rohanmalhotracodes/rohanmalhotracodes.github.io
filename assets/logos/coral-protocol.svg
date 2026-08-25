@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 120" role="img" aria-labelledby="title">
+  <title id="title">Coral Protocol</title>
+  <rect width="520" height="120" fill="#fff"/>
+  <g transform="translate(12 12)" fill="none" stroke="#12a69b" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="48" cy="48" r="43" fill="#12a69b" stroke="none"/>
+    <path d="M48 76V44M48 53L31 37M48 48L64 29M48 62L69 47M31 37L23 29M31 37L25 50M64 29L69 19M64 29L76 32M69 47L78 41M69 47L74 60" stroke="#fff" stroke-width="7"/>
+  </g>
+  <text x="116" y="57" fill="#101828" font-family="Arial,Helvetica,sans-serif" font-size="35" font-weight="800" letter-spacing="2">CORAL</text>
+  <text x="116" y="87" fill="#12a69b" font-family="Arial,Helvetica,sans-serif" font-size="22" font-weight="700" letter-spacing="8">PROTOCOL</text>
+</svg>
