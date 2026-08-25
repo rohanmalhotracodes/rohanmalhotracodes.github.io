@@ -2,7 +2,6 @@ const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelecto
 const root=document.documentElement,settings=$('#settings');
 $('#settingsOpen').addEventListener('click',()=>settings.classList.toggle('open'));
 $('#settingsClose').addEventListener('click',()=>settings.classList.remove('open'));
-$('#motionToggle').addEventListener('change',e=>root.classList.toggle('still',!e.target.checked));
 $('#themeToggle').addEventListener('change',e=>root.classList.toggle('dark',e.target.checked));
 addEventListener('keydown',e=>{if(e.key==='Escape'){settings.classList.remove('open');$('#chatPop').classList.remove('open')}});
 
