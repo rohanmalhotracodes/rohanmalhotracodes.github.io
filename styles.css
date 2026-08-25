@@ -284,7 +284,7 @@ html{scroll-padding-top:110px}
 .cv-download{min-width:180px;letter-spacing:.09em}
 
 /* Unambiguous settings and contact symbols */
-.settings-icon{width:21px!important;height:21px!important;stroke-width:1.7!important}
+.settings-icon{width:23px!important;height:23px!important;fill:currentColor!important;stroke:none!important}
 .contact-icon{display:block;width:27px;height:27px;flex:0 0 27px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .linkedin-icon{fill:currentColor;stroke:none}
 .linkedin-action{background:var(--paper);color:var(--ink)}
@@ -292,3 +292,21 @@ html{scroll-padding-top:110px}
 
 @media(max-width:760px){.skills-marquee::before{padding:9px 11px;font-size:8px}.cv-download{min-width:160px}}
 @media(max-width:760px){.achievement-logo img.achievement-logo-yandex,.achievement-logo img.achievement-logo-tcs,.achievement-logo img.achievement-logo-zs,.achievement-logo img.achievement-logo-wemakedevs{max-width:126px!important;max-height:44px!important}}
+
+/* Stronger ambient engineering backdrop, still controlled by the motion setting */
+.bg-words{opacity:.13;font-size:12px;letter-spacing:.14em}
+.bg-words::before{content:"";position:absolute;inset:-64px;background-image:linear-gradient(color-mix(in srgb,var(--ink) 16%,transparent) 1px,transparent 1px),linear-gradient(90deg,color-mix(in srgb,var(--ink) 16%,transparent) 1px,transparent 1px);background-size:48px 48px;opacity:.28;animation:backgroundGridDrift 24s linear infinite}
+.bg-words span{z-index:1}
+.bg-words span:nth-child(7){top:14%;right:17%;animation-delay:-7s}
+.bg-words span:nth-child(8){top:30%;left:18%;animation-delay:-16s}
+.bg-words span:nth-child(9){top:46%;right:26%;animation-delay:-2s}
+.bg-words span:nth-child(10){top:57%;left:38%;animation-delay:-12s}
+.bg-words span:nth-child(11){top:72%;left:24%;animation-delay:-9s}
+.bg-words span:nth-child(12){top:86%;right:7%;animation-delay:-19s}
+.background-still .bg-words::before{animation-play-state:paused!important}
+@keyframes backgroundGridDrift{to{transform:translate3d(48px,48px,0)}}
+
+/* Wide attached event artwork stays fully visible inside the achievement card */
+.achievement-logo img.achievement-logo-dsh{max-width:210px!important;max-height:52px!important}
+@media(max-width:760px){.achievement-logo img.achievement-logo-dsh{max-width:148px!important;max-height:44px!important}}
+@media(prefers-reduced-motion:reduce){.bg-words::before{animation:none!important}}
