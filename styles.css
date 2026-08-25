@@ -272,3 +272,18 @@ html{scroll-padding-top:110px}
   .achievement-logo{height:64px!important}
   .achievement-logo img.achievement-logo-unstop,.achievement-logo img.achievement-logo-amazon,.achievement-logo img.achievement-logo-flipkart,.achievement-logo img.achievement-logo-coral{max-width:142px!important;max-height:44px!important}
 }
+
+/* Clear technology context above the moving logo strip */
+.skills-marquee::before{content:">_ TOOLS & TECHNOLOGIES   ·   TECHNOLOGIES I BUILD WITH";display:block;padding:10px 16px;border-bottom:2px solid var(--ink);background:var(--paper);color:var(--ink);font-size:10px;font-weight:700;letter-spacing:.1em;white-space:normal}
+
+/* Downloadable CV call to action */
+.cv-download{min-width:180px;letter-spacing:.09em}
+
+/* Unambiguous settings and contact symbols */
+.settings-icon{width:21px!important;height:21px!important;stroke-width:1.7!important}
+.contact-icon{display:block;width:27px;height:27px;flex:0 0 27px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.linkedin-icon{fill:currentColor;stroke:none}
+.linkedin-action{background:var(--paper);color:var(--ink)}
+.linkedin-action:hover{background:var(--ink);color:var(--paper);transform:translate(-1px,-1px);box-shadow:6px 6px 0 var(--shadow)}
+
+@media(max-width:760px){.skills-marquee::before{padding:9px 11px;font-size:8px}.cv-download{min-width:160px}}
