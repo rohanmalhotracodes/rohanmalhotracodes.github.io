@@ -47,7 +47,7 @@ if(headerEyes.length&&matchMedia('(pointer:fine)').matches){
     headerEyes.forEach(eye=>{
       const rect=eye.getBoundingClientRect();
       const dx=pointerX-(rect.left+rect.width/2),dy=pointerY-(rect.top+rect.height/2);
-      const distance=Math.hypot(dx,dy)||1,travel=Math.min(6,distance);
+      const distance=Math.hypot(dx,dy)||1,travel=Math.min(4,distance);
       eye.style.setProperty('--eye-x',`${dx/distance*travel}px`);
       eye.style.setProperty('--eye-y',`${dy/distance*travel}px`);
     });
