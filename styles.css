@@ -278,7 +278,7 @@ html{scroll-padding-top:110px}
 }
 
 /* Clear technology context above the moving logo strip */
-.skills-marquee::before{content:">_ TOOLS & TECHNOLOGIES   ·   TECHNOLOGIES I BUILD WITH";display:block;padding:10px 16px;border-bottom:2px solid var(--ink);background:var(--paper);color:var(--ink);font-size:10px;font-weight:700;letter-spacing:.1em;white-space:normal}
+.skills-marquee::before{content:">_ TOOLS & TECHNOLOGIES I WORK WITH";display:block;padding:10px 16px;border-bottom:2px solid var(--ink);background:var(--paper);color:var(--ink);font-size:10px;font-weight:700;letter-spacing:.1em;white-space:normal}
 
 /* Downloadable CV call to action */
 .cv-download{min-width:180px;letter-spacing:.09em}
@@ -317,3 +317,22 @@ html{scroll-padding-top:110px}
 .project-card:hover figure.project-banner img{filter:none!important}
 .project-card figure.solar-sweeper-banner{padding:0;background:#eaf8ff}
 .contact-submit:disabled{opacity:.55;cursor:wait;transform:none;box-shadow:4px 4px 0 var(--shadow)}
+
+/* Theme-safe settings mark */
+.header nav button .settings-icon{color:var(--ink)!important;fill:var(--ink)!important;stroke:none!important}
+.header nav button:hover .settings-icon,.header nav button[aria-expanded="true"] .settings-icon{color:var(--paper)!important;fill:var(--paper)!important;stroke:none!important}
+
+/* Center education marks and keep long institute names inside mobile cards */
+.education-roadmap .journey-card>div{min-width:0}
+.education-roadmap .journey-card h3,.education-roadmap .journey-card p,.education-roadmap .journey-card strong{max-width:100%;overflow-wrap:anywhere}
+.education-roadmap .journey-card .org-mark.square{width:56px!important;height:56px!important;min-width:56px;display:flex!important;align-items:center!important;justify-content:center!important;padding:5px!important}
+.education-roadmap .journey-card .org-mark.square img{width:44px!important;height:44px!important;max-width:44px!important;max-height:44px!important;margin:0!important;object-fit:contain!important;object-position:50% 50%!important;transform:none!important}
+
+@media(max-width:760px){
+  .education-roadmap .education-timeline article{grid-template-columns:82px 24px minmax(0,1fr)}
+  .education-roadmap .journey-card{grid-template-columns:1fr;min-width:0;padding:14px 10px;gap:10px}
+  .education-roadmap .journey-card .org-mark.square{justify-self:center!important;align-self:start!important}
+  .education-roadmap .journey-card>div>b{font-size:7px;letter-spacing:.04em;white-space:nowrap}
+  .education-roadmap .journey-card h3{font-size:12px;line-height:1.25}
+  .education-roadmap .journey-card p,.education-roadmap .journey-card strong{font-size:8px}
+}
