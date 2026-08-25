@@ -1,55 +1,67 @@
+import * as THREE from 'three';
 const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
 
-// ---- Settings + navigation ----
-const settings=$('#settingsPanel'),settingsBtn=$('#settingsBtn'),settingsClose=$('#settingsClose');
-settingsBtn?.addEventListener('click',()=>settings.classList.toggle('open'));settingsClose?.addEventListener('click',()=>settings.classList.remove('open'));
-$('#themeToggle')?.addEventListener('change',e=>document.documentElement.classList.toggle('light',e.target.checked));
-$('#motionToggle')?.addEventListener('change',e=>document.body.classList.toggle('no-animation',!e.target.checked));
-$('#cursorToggle')?.addEventListener('change',e=>$('.cursor-dot')?.classList.toggle('off',!e.target.checked));
+// Settings
+const root=document.documentElement,body=document.body;
+const settingsBtn=$('#settingsBtn'),settingsPanel=$('#settingsPanel'),settingsClose=$('#settingsClose');
+settingsBtn?.addEventListener('click',()=>settingsPanel.classList.toggle('open'));
+settingsClose?.addEventListener('click',()=>settingsPanel.classList.remove('open'));
+$('#themeToggle')?.addEventListener('change',e=>root.classList.toggle('light',e.target.checked));
+$('#motionToggle')?.addEventListener('change',e=>body.classList.toggle('no-animation',e.target.checked));
+$('#cursorToggle')?.addEventListener('change',e=>$('#cursorDot').classList.toggle('off',!e.target.checked));
 
-const dot=$('.cursor-dot');window.addEventListener('pointermove',e=>{if(dot){dot.style.left=e.clientX+'px';dot.style.top=e.clientY+'px'}});
-$$('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{const t=$(a.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:document.body.classList.contains('no-animation')?'auto':'smooth'})}}));
+// Cursor
+const cursor=$('#cursorDot');
+window.addEventListener('pointermove',e=>{if(cursor){cursor.style.left=e.clientX+'px';cursor.style.top=e.clientY+'px'}});
+$$('a,button,input').forEach(el=>{el.addEventListener('mouseenter',()=>{if(cursor){cursor.style.width='34px';cursor.style.height='34px'}});el.addEventListener('mouseleave',()=>{if(cursor){cursor.style.width='18px';cursor.style.height='18px'}})});
 
-// ---- Reveal motion ----
-const io=new IntersectionObserver(entries=>entries.forEach(x=>x.isIntersecting&&x.target.classList.add('visible')),{threshold:.12});$$('.reveal').forEach(x=>io.observe(x));
+// Reveal
+const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}}),{threshold:.12});
+$$('.reveal').forEach(el=>observer.observe(el));
 
-// ---- Project carousel ----
-const track=$('#projectTrack');$('#projectPrev')?.addEventListener('click',()=>track?.scrollBy({left:-Math.min(520,innerWidth*.7),behavior:'smooth'}));$('#projectNext')?.addEventListener('click',()=>track?.scrollBy({left:Math.min(520,innerWidth*.7),behavior:'smooth'}));
+// Project rail
+const track=$('#projectTrack');
+$('#nextProject')?.addEventListener('click',()=>track.scrollBy({left:Math.min(track.clientWidth*.75,520),behavior:'smooth'}));
+$('#prevProject')?.addEventListener('click',()=>track.scrollBy({left:-Math.min(track.clientWidth*.75,520),behavior:'smooth'}));
 
-// ---- 3D engineering world (original scene, inspired by interactive portfolio cities) ----
-let THREE,heroRenderer,heroScene,heroCamera,heroGroup,cityRenderer,cityScene,cityCamera,cityGroup,cityAnim;
-async function loadThree(){if(THREE)return THREE;THREE=await import('https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js');return THREE}
-function buildWorld(canvas,full=false){const T=THREE;const renderer=new T.WebGLRenderer({canvas,antialias:true,alpha:true});renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.setSize(canvas.clientWidth,canvas.clientHeight,false);renderer.outputColorSpace=T.SRGBColorSpace;const scene=new T.Scene();scene.background=full?new T.Color(0x060809):null;scene.fog=new T.FogExp2(0x080b0d,full?.018:.025);const cam=new T.PerspectiveCamera(full?55:42,canvas.clientWidth/canvas.clientHeight,.1,100);cam.position.set(full?10:7,full?8:6,full?13:10);const group=new T.Group();scene.add(group);
-const amb=new T.HemisphereLight(0xc7faff,0x172019,1.7);scene.add(amb);const key=new T.DirectionalLight(0xe8ff9a,3.4);key.position.set(5,10,7);scene.add(key);
-const ground=new T.Mesh(new T.BoxGeometry(18,.5,18),new T.MeshStandardMaterial({color:0x0d1214,roughness:.9,metalness:.1}));ground.position.y=-.35;group.add(ground);
-const accent=0xdff85f,cyan=0x66e8f3,dark=0x141a1d;const blocks=[[-4,1,-3,2.6,2.6,2.2,accent],[-1.2,.7,-3.8,2,1.5,2.2,dark],[2.3,1.5,-2.8,2.8,3.5,2.5,cyan],[4.5,.65,.7,2.4,1.4,2.6,dark],[-3.5,.8,1.1,3.2,1.7,2.4,dark],[0,1.9,1.4,3.3,4.3,3.2,accent],[2.8,.7,4,2.4,1.6,2.4,dark],[-2.7,.55,4,2.1,1.1,2.1,cyan]];blocks.forEach(([x,y,z,w,h,d,c])=>{const m=new T.Mesh(new T.BoxGeometry(w,h,d),new T.MeshStandardMaterial({color:c,roughness:.55,metalness:.22,emissive:c===dark?0x000000:c,emissiveIntensity:.045}));m.position.set(x,y,z);group.add(m);for(let i=0;i<3;i++){const win=new T.Mesh(new T.PlaneGeometry(.38,.16),new T.MeshBasicMaterial({color:0xeef8ce,transparent:true,opacity:.45}));win.position.set(x+(i-1)*.55,y+h/2+.01,z+d/2+.002);group.add(win)}});
-const roadMat=new T.MeshStandardMaterial({color:0x20262a,roughness:1});[-2,2].forEach(z=>{const r=new T.Mesh(new T.BoxGeometry(18,.04,.9),roadMat);r.position.set(0,-.06,z);group.add(r)});[-2,2].forEach(x=>{const r=new T.Mesh(new T.BoxGeometry(.9,.04,18),roadMat);r.position.set(x,-.05,0);group.add(r)});
-for(let i=0;i<18;i++){const p=new T.Mesh(new T.CylinderGeometry(.05,.05,.8,8),new T.MeshStandardMaterial({color:0x9fa6aa}));p.position.set((i%6-2.5)*2.7,.15,(Math.floor(i/6)-1)*6.6);group.add(p);const lamp=new T.PointLight(i%2?accent:cyan,.35,2.8);lamp.position.set(p.position.x,.65,p.position.z);group.add(lamp)}
-const resize=()=>{const w=canvas.clientWidth,h=canvas.clientHeight;if(!w||!h)return;renderer.setSize(w,h,false);cam.aspect=w/h;cam.updateProjectionMatrix()};resize();return{renderer,scene,cam,group,resize}}
-async function initHero(){try{await loadThree();const c=$('#heroCanvas');if(!c)return;({renderer:heroRenderer,scene:heroScene,cam:heroCamera,group:heroGroup,resize:window.heroResize}=buildWorld(c,false));let mx=0,my=0;c.addEventListener('pointermove',e=>{const r=c.getBoundingClientRect();mx=((e.clientX-r.left)/r.width-.5);my=((e.clientY-r.top)/r.height-.5)});function loop(){requestAnimationFrame(loop);heroGroup.rotation.y+=.0018;heroGroup.rotation.x+=(my*.08-heroGroup.rotation.x)*.025;heroGroup.rotation.y+=(mx*.10)*.01;heroRenderer.render(heroScene,heroCamera)}loop()}catch(e){console.warn('3D preview unavailable',e)}}
-initHero();window.addEventListener('resize',()=>{window.heroResize?.();window.cityResize?.()});
-
-const cityModal=$('#cityModal');$('#openCity')?.addEventListener('click',async()=>{cityModal.classList.add('open');if(cityRenderer)return;try{await loadThree();({renderer:cityRenderer,scene:cityScene,cam:cityCamera,group:cityGroup,resize:window.cityResize}=buildWorld($('#cityCanvas'),true));let drag=false,lastX=0,lastY=0,rx=.18,ry=.45,zoom=15;const c=$('#cityCanvas');c.addEventListener('pointerdown',e=>{drag=true;lastX=e.clientX;lastY=e.clientY});window.addEventListener('pointerup',()=>drag=false);window.addEventListener('pointermove',e=>{if(!drag)return;ry+=(e.clientX-lastX)*.006;rx=Math.max(-.3,Math.min(.7,rx+(e.clientY-lastY)*.004));lastX=e.clientX;lastY=e.clientY});c.addEventListener('wheel',e=>{zoom=Math.max(7,Math.min(24,zoom+e.deltaY*.01));e.preventDefault()},{passive:false});function render(){cityAnim=requestAnimationFrame(render);cityGroup.rotation.y+=(ry-cityGroup.rotation.y)*.04;cityGroup.rotation.x+=(rx-cityGroup.rotation.x)*.04;cityCamera.position.z+=(zoom-cityCamera.position.z)*.05;cityRenderer.render(cityScene,cityCamera)}render()}catch(e){console.warn(e)}});$('#closeCity')?.addEventListener('click',()=>cityModal.classList.remove('open'));
-
-// ---- Portfolio assistant ----
-const assistant=$('#assistantPanel'),launcher=$('#assistantLauncher'),messages=$('#assistantMessages'),form=$('#assistantForm'),input=$('#assistantInput');
-function openAssistant(){assistant.classList.add('open');input?.focus()}launcher?.addEventListener('click',openAssistant);$('#assistantClose')?.addEventListener('click',()=>assistant.classList.remove('open'));
-const knowledge={
- intro:`Rohan Malhotra is a Computer Engineering student at Thapar Institute of Engineering & Technology, focused on software engineering, open source, developer tooling and algorithmic problem solving.`,
- experience:`His highlighted engineering experience includes computer-vision work at Bharat Electronics Limited, open-source ownership and contributions at Oppia Foundation, and active TrueForge / TrueFoundry contributions around chat lifecycle, cancellation and sandbox behavior.`,
- oppia:`At Oppia Foundation, Rohan worked as a Project Owner & Collaborator across production code and developer documentation, including TypeScript safety, rich-text-editor issue tracks, API payload migrations and regression fixes.`,
- trueforge:`Rohan contributes to TrueForge / TrueFoundry. Current highlighted work includes persisted chat deletion and cancellation / sandbox behavior improvements.`,
- bel:`At Bharat Electronics Limited, he worked on computer-vision systems, including a road-scene accident-detection pipeline using YOLO and DenseNet on KITTI.`,
- projects:`Key projects include OmniSprint, Smriti, Solar Sweeper, ProductDNA and RepoWise. OmniSprint is the flagship: an AI sprint-risk intelligence layer that combines roadmap, GitHub and CI signals.`,
- omnisprint:`OmniSprint analyzes engineering execution risk across roadmaps, GitHub and CI. It placed Top 50 among 5,400+ participants in the Pirates of the Coral-Bean hackathon and later won the Iteration Machine Special Prize at DSH Hacks V1.`,
- achievements:`Highlights include TCS CodeVita Global Rank 57, Yandex CodeRun Winter Challenge Global Rank 87, Rank 8 in Unstop's Top 100 Unstoppable E-School Leaders 2026, selection for Amazon ML Summer School 2025, ZS Campus Beats Top 100, and multiple hackathon awards.`,
- competitive:`Competitive programming highlights: TCS CodeVita Global Rank 57 and Yandex CodeRun Winter Challenge Global Rank 87.`,
- education:`Rohan studies B.E. Computer Engineering at Thapar Institute of Engineering & Technology (TIET), graduating in 2027.`,
- skills:`Core stack: C++, Python, Java, TypeScript/JavaScript, React, FastAPI, Node.js, SQL/Postgres, Docker, Git/GitHub, with experience in ML/computer vision and developer tooling.`,
- contact:`You can reach Rohan through LinkedIn or GitHub using the links on this portfolio.`,
- writing:`Rohan was featured in Pratyaksh 2025 and has also been recognized through Unstop's Top 100 Unstoppable E-School Leaders.`
+// Portfolio assistant
+const assistantPanel=$('#assistantPanel'),assistantMessages=$('#assistantMessages'),assistantInput=$('#assistantInput');
+const openAssistant=()=>{assistantPanel.classList.add('open');setTimeout(()=>assistantInput?.focus(),80)};
+$('#assistantLauncher')?.addEventListener('click',()=>assistantPanel.classList.toggle('open'));
+$('#openAssistantHero')?.addEventListener('click',openAssistant);
+$('#assistantClose')?.addEventListener('click',()=>assistantPanel.classList.remove('open'));
+const facts={
+  strongest:`OmniSprint is the strongest all-round portfolio project: it combines engineering signals from roadmaps, GitHub and CI to surface sprint risk, blockers and likely regressions. It placed Top 50 among 5,400+ entries and later won the Iteration Machine Special Prize at DSH Hacks V1.`,
+  open:`Rohan has substantial open-source experience with Oppia and current work around TrueForge / TrueFoundry. At Oppia he worked on full-stack regressions, TypeScript strictness, API payload migrations, RTE behavior and documentation, with 12+ merged high-impact PRs and 14+ resolved issues.`,
+  achievements:`Highlights include Global Rank 57 in TCS CodeVita, Global Rank 87 in Yandex CodeRun, Rank 8 in Unstop's Top 100 Unstoppable E-School Leaders, Top 100 in ZS Campus Beats, selection for Amazon ML Summer School 2025, and multiple hackathon wins / special prizes.`,
+  hire:`Rohan is strongest when a problem crosses product and engineering boundaries. He has evidence of shipping in open source, working with real-time computer vision, building developer tooling, debugging product behavior, and competing at a high algorithmic level.`,
+  bel:`At Bharat Electronics Limited, Rohan worked on road-scene accident detection using YOLO and DenseNet-style vision pipelines, with reported results around 88% detection accuracy, 0.92 F1 and 180 ms/frame.`,
+  skills:`His toolkit includes C++, Python, Java, JavaScript / TypeScript, SQL, React, FastAPI, Flask, Node.js, Postgres, Docker, Git/GitHub, ML/vision tooling, MQTT and CI workflows.`,
+  education:`Rohan is pursuing a B.E. in Computer Engineering at Thapar Institute of Engineering & Technology, graduating in 2027.`
 };
-function answer(q){const s=q.toLowerCase();if(/who|about|introduce|rohan/.test(s)&&!/(oppia|trueforge|bel)/.test(s))return knowledge.intro;if(/oppia/.test(s))return knowledge.oppia;if(/trueforge|truefoundry/.test(s))return knowledge.trueforge;if(/bharat|bel|vision/.test(s))return knowledge.bel;if(/omnisprint/.test(s))return knowledge.omnisprint;if(/project|built|build|hackathon/.test(s))return knowledge.projects;if(/achievement|award|rank|codevita|yandex|competitive/.test(s))return /project|hackathon/.test(s)?knowledge.projects:knowledge.achievements;if(/experience|work|intern/.test(s))return knowledge.experience;if(/skill|stack|language|technology/.test(s))return knowledge.skills;if(/college|education|degree|thapar|tiet/.test(s))return knowledge.education;if(/article|writing|pratyaksh|unstop/.test(s))return knowledge.writing;if(/contact|email|linkedin|github/.test(s))return knowledge.contact;return `I can answer questions about Rohan's experience, projects, open-source work, competitive-programming ranks, education, skills and achievements. Try asking “What did he do at Oppia?” or “Tell me about OmniSprint.”`}
-function addMsg(text,type){const el=document.createElement('div');el.className='message '+type;el.textContent=text;messages.append(el);messages.scrollTop=messages.scrollHeight}
-function ask(q){if(!q.trim())return;addMsg(q,'user');setTimeout(()=>addMsg(answer(q),'bot'),180)}
-form?.addEventListener('submit',e=>{e.preventDefault();const q=input.value;input.value='';ask(q)});$$('.assistant-suggestions button').forEach(b=>b.addEventListener('click',()=>{openAssistant();ask(b.textContent)}));
+function replyFor(q){const s=q.toLowerCase();if(s.includes('strong')||s.includes('best project')||s.includes('omnisprint'))return facts.strongest;if(s.includes('open source')||s.includes('oppia')||s.includes('trueforge')||s.includes('truefoundry'))return facts.open;if(s.includes('achievement')||s.includes('rank')||s.includes('award')||s.includes('codevita')||s.includes('yandex')||s.includes('unstop'))return facts.achievements;if(s.includes('hire')||s.includes('why rohan')||s.includes('strength'))return facts.hire;if(s.includes('bharat')||s.includes('bel')||s.includes('vision'))return facts.bel;if(s.includes('skill')||s.includes('stack')||s.includes('language'))return facts.skills;if(s.includes('college')||s.includes('education')||s.includes('thapar')||s.includes('tiet'))return facts.education;if(s.includes('contact')||s.includes('email'))return `You can reach Rohan via LinkedIn or GitHub from the Contact section, or email rohanmalhotracodes@gmail.com.`;return `Rohan's profile centers on open-source product engineering, developer tools, computer vision, systems behavior and competitive programming. Ask me about a specific project, company, rank, skill or contribution and I'll narrow it down.`}
+function addMessage(text,type='bot'){const el=document.createElement('div');el.className='message '+type;el.textContent=text;assistantMessages.appendChild(el);assistantMessages.scrollTop=assistantMessages.scrollHeight}
+$('#assistantForm')?.addEventListener('submit',e=>{e.preventDefault();const q=assistantInput.value.trim();if(!q)return;addMessage(q,'user');assistantInput.value='';setTimeout(()=>addMessage(replyFor(q),'bot'),180)});
+$$('.assistant-suggestions button').forEach(btn=>btn.addEventListener('click',()=>{openAssistant();const q=btn.dataset.q;addMessage(q,'user');setTimeout(()=>addMessage(replyFor(q),'bot'),140)}));
+
+function makeCity(canvas,expanded=false){
+  const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});
+  renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.outputColorSpace=THREE.SRGBColorSpace;
+  const scene=new THREE.Scene();scene.background=new THREE.Color(expanded?0x05070a:0x0d1115);scene.fog=new THREE.Fog(expanded?0x05070a:0x0d1115,10,expanded?48:34);
+  const camera=new THREE.PerspectiveCamera(42,1,.1,100);camera.position.set(expanded?11:9,expanded?10:8,expanded?14:12);camera.lookAt(0,1,0);
+  scene.add(new THREE.AmbientLight(0x9ab8c8,1.5));const sun=new THREE.DirectionalLight(0xe8ffb0,3);sun.position.set(6,12,8);scene.add(sun);
+  const ground=new THREE.Mesh(new THREE.PlaneGeometry(34,34),new THREE.MeshStandardMaterial({color:expanded?0x0d1116:0x11171c,roughness:.95,metalness:.05}));ground.rotation.x=-Math.PI/2;ground.position.y=-.02;scene.add(ground);
+  const grid=new THREE.GridHelper(34,34,0x33414a,0x1b252b);grid.position.y=.002;scene.add(grid);
+  const group=new THREE.Group();scene.add(group);
+  const colors=[0xdff36a,0x72d9e6,0x99a5ff,0xd3d7db,0x8ee5a1];
+  const positions=[[-5,-4],[-2,-4],[2,-4],[5,-4],[-5,0],[-2,0],[2,0],[5,0],[-5,4],[-2,4],[2,4],[5,4]];
+  positions.forEach((p,i)=>{const h=1.1+((i*17)%7)*.55;const w=1.5+(i%3)*.25;const mesh=new THREE.Mesh(new THREE.BoxGeometry(w,h,w),new THREE.MeshStandardMaterial({color:colors[i%colors.length],roughness:.48,metalness:.15,emissive:colors[i%colors.length],emissiveIntensity:.025}));mesh.position.set(p[0],h/2,p[1]);mesh.userData.baseY=mesh.position.y;group.add(mesh);const cap=new THREE.Mesh(new THREE.BoxGeometry(w*.62,.12,w*.62),new THREE.MeshBasicMaterial({color:0xf4f0df}));cap.position.set(p[0],h+.08,p[1]);group.add(cap)});
+  const roadMat=new THREE.MeshStandardMaterial({color:0x171c20,roughness:1});for(let x=-4;x<=4;x+=4){const r=new THREE.Mesh(new THREE.BoxGeometry(.9,.04,30),roadMat);r.position.set(x,.01,0);scene.add(r)}for(let z=-2;z<=2;z+=4){const r=new THREE.Mesh(new THREE.BoxGeometry(30,.04,.9),roadMat);r.position.set(0,.012,z);scene.add(r)}
+  let dragging=false,lastX=0,lastY=0,targetRotY=-.45,targetRotX=-.18;canvas.addEventListener('pointerdown',e=>{dragging=true;lastX=e.clientX;lastY=e.clientY;canvas.setPointerCapture?.(e.pointerId)});canvas.addEventListener('pointerup',()=>dragging=false);canvas.addEventListener('pointermove',e=>{if(!dragging)return;targetRotY+=(e.clientX-lastX)*.006;targetRotX+=(e.clientY-lastY)*.004;lastX=e.clientX;lastY=e.clientY});canvas.addEventListener('wheel',e=>{camera.position.multiplyScalar(e.deltaY>0?1.06:.94);camera.position.clampLength(7,28);e.preventDefault()},{passive:false});
+  let t=0;function resize(){const rect=canvas.getBoundingClientRect();if(canvas.width!==Math.floor(rect.width*renderer.getPixelRatio())||canvas.height!==Math.floor(rect.height*renderer.getPixelRatio())){renderer.setSize(rect.width,rect.height,false);camera.aspect=rect.width/Math.max(rect.height,1);camera.updateProjectionMatrix()}}
+  function loop(){requestAnimationFrame(loop);resize();t+=.008;group.rotation.y+=(targetRotY-group.rotation.y)*.035;group.rotation.x+=(targetRotX-group.rotation.x)*.035;group.children.forEach((m,i)=>{if(m.geometry?.type==='BoxGeometry'&&m.userData.baseY)m.position.y=m.userData.baseY+Math.sin(t*2+i)*.025});renderer.render(scene,camera)}loop();return{renderer,scene,camera,group};
+}
+const heroCanvas=$('#heroCanvas');if(heroCanvas)makeCity(heroCanvas,false);
+let cityInstance=null;const cityModal=$('#cityModal');
+function showCity(){cityModal.classList.add('open');if(!cityInstance)cityInstance=makeCity($('#cityCanvas'),true)}
+$('#openCity')?.addEventListener('click',showCity);$('#closeCity')?.addEventListener('click',()=>cityModal.classList.remove('open'));window.addEventListener('keydown',e=>{if(e.key==='Escape'){cityModal.classList.remove('open');assistantPanel.classList.remove('open');settingsPanel.classList.remove('open')}});
