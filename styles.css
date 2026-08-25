@@ -182,3 +182,8 @@ html{scroll-padding-top:110px}
 .tech-logo svg,.tech-logo img{width:30px;height:30px}
 html:not(.dark) .marquee-set .tech-logo:nth-child(12) svg,html:not(.dark) .marquee-set .tech-logo:nth-child(17) svg{filter:invert(1)!important}
 @media(max-width:760px){.tech-logo svg,.tech-logo img{width:26px;height:26px}}
+
+/* Clear settings control and larger Quick Proof marks */
+.header nav button .nav-icon{width:20px;height:20px;stroke-width:2}
+.proof-logos>span img{max-width:64px;max-height:34px}
+@media(max-width:760px){.proof-logos>span img{max-width:54px;max-height:31px}}
