@@ -98,3 +98,11 @@ main{display:flex;flex-direction:column}
 .card-links{margin-top:12px}
 .card-links a{display:inline-grid;place-items:center;min-height:28px;padding:4px 8px;border:2px solid var(--ink);background:var(--paper);color:var(--ink);font-size:7px;font-weight:700;letter-spacing:.06em;text-decoration:none;box-shadow:2px 2px 0 var(--shadow)}
 .card-links a:hover{background:var(--ink);color:var(--paper)}
+
+/* Uniform Quick Proof grid */
+.quick{--quick-line:3px;grid-template-columns:repeat(2,minmax(0,1fr));overflow:hidden}
+.quick h2{border-bottom:var(--quick-line) solid var(--ink)}
+.quick>.metric{border:0!important}
+.quick>.metric:nth-of-type(1),.quick>.metric:nth-of-type(3){border-right:var(--quick-line) solid var(--ink)!important}
+.quick>.metric:nth-of-type(1),.quick>.metric:nth-of-type(2){border-bottom:var(--quick-line) solid var(--ink)!important}
+.quick>.proof-logos{border-top:var(--quick-line) solid var(--ink)}
