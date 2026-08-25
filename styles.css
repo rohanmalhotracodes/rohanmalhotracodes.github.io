@@ -336,3 +336,29 @@ html{scroll-padding-top:110px}
   .education-roadmap .journey-card h3{font-size:12px;line-height:1.25}
   .education-roadmap .journey-card p,.education-roadmap .journey-card strong{font-size:8px}
 }
+
+/* Compact contact composition for phones */
+@media(max-width:760px){
+  .contact-section{padding:12px 8px 18px}
+  .contact-section>.section-bar{margin-bottom:12px}
+  .contact-section>.section-bar h2{padding:4px 9px;font-size:11px}
+  .contact-layout{gap:14px}
+  .contact-form{padding:14px;gap:13px;box-shadow:4px 4px 0 color-mix(in srgb,var(--ink) 22%,transparent)}
+  .form-pair{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .contact-form label{gap:6px;font-size:8px;letter-spacing:.02em;min-width:0}
+  .contact-form input,.contact-form textarea{padding:10px;font-size:10px;min-width:0}
+  .contact-form input{min-height:44px}
+  .contact-form textarea{min-height:120px;max-height:180px}
+  .contact-submit{min-height:50px;font-size:13px;letter-spacing:.1em;box-shadow:3px 3px 0 var(--shadow)}
+  .contact-submit span{font-size:19px;margin-right:6px}
+  .form-status{min-height:9px;font-size:7px}
+  .contact-panels{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:auto;gap:12px}
+  .contact-panels article{min-height:118px;padding:15px 9px;box-shadow:4px 4px 0 color-mix(in srgb,var(--ink) 22%,transparent)}
+  .contact-panels h3{font-size:9px;line-height:1.3;margin-bottom:12px}
+  .contact-action,.linkedin-action{min-height:46px;gap:7px;padding:5px;font-size:8px;letter-spacing:.07em;box-shadow:3px 3px 0 var(--shadow)}
+  .contact-icon{width:18px;height:18px;flex-basis:18px}
+  .contact-panels p{display:none}
+}
+@media(max-width:350px){
+  .form-pair,.contact-panels{grid-template-columns:1fr}
+}
