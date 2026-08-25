@@ -1,9 +1,22 @@
 const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
 const root=document.documentElement,settings=$('#settings');
-$('#settingsOpen').addEventListener('click',()=>settings.classList.toggle('open'));
-$('#settingsClose').addEventListener('click',()=>settings.classList.remove('open'));
-$('#themeToggle').addEventListener('change',e=>root.classList.toggle('dark',e.target.checked));
-addEventListener('keydown',e=>{if(e.key==='Escape'){settings.classList.remove('open');$('#chatPop').classList.remove('open')}});
+const settingsOpen=$('#settingsOpen'),brightMode=$('#brightMode'),darkMode=$('#darkMode'),motionToggle=$('#motionToggle');
+const setTheme=theme=>{
+  const dark=theme==='dark';
+  root.classList.toggle('dark',dark);
+  brightMode.classList.toggle('active',!dark);
+  darkMode.classList.toggle('active',dark);
+  localStorage.setItem('portfolio-theme',dark?'dark':'bright');
+};
+setTheme(localStorage.getItem('portfolio-theme')==='dark'?'dark':'bright');
+const motionEnabled=localStorage.getItem('portfolio-motion')!=='off';
+root.classList.toggle('background-still',!motionEnabled);motionToggle.checked=motionEnabled;
+settingsOpen.addEventListener('click',()=>{const open=settings.classList.toggle('open');settingsOpen.setAttribute('aria-expanded',String(open))});
+$('#settingsClose').addEventListener('click',()=>{settings.classList.remove('open');settingsOpen.setAttribute('aria-expanded','false')});
+brightMode.addEventListener('click',()=>setTheme('bright'));
+darkMode.addEventListener('click',()=>setTheme('dark'));
+motionToggle.addEventListener('change',event=>{root.classList.toggle('background-still',!event.target.checked);localStorage.setItem('portfolio-motion',event.target.checked?'on':'off')});
+addEventListener('keydown',e=>{if(e.key==='Escape'){settings.classList.remove('open');settingsOpen.setAttribute('aria-expanded','false')}});
 
 const rail=$('#projectRail');
 $('#projectNext').addEventListener('click',()=>rail.scrollBy({left:366,behavior:'smooth'}));
@@ -13,11 +26,19 @@ rail.addEventListener('pointerdown',e=>{dragging=true;startX=e.clientX;startScro
 rail.addEventListener('pointermove',e=>{if(dragging)rail.scrollLeft=startScroll-(e.clientX-startX)});
 rail.addEventListener('pointerup',()=>dragging=false);rail.addEventListener('pointercancel',()=>dragging=false);
 
-const chat=$('#chatPop');$('#chatButton').addEventListener('click',()=>chat.classList.toggle('open'));$('#chatClose').addEventListener('click',()=>chat.classList.remove('open'));
-
 const navLinks=$$('.header nav a[href^="#"]');
-const sections=$$('section[id],#top');
+const sections=navLinks.map(link=>$(link.getAttribute('href'))).filter(Boolean);
 const spy=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){navLinks.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+entry.target.id))}}),{rootMargin:'-42% 0px -52%'});sections.forEach(s=>spy.observe(s));
+
+const contactForm=$('#contactForm');
+if(contactForm){contactForm.addEventListener('submit',event=>{
+  event.preventDefault();
+  const first=$('#contactFirstName').value.trim(),last=$('#contactLastName').value.trim(),email=$('#contactEmail').value.trim(),message=$('#contactMessage').value.trim();
+  const subject=encodeURIComponent(`Portfolio message from ${first} ${last}`);
+  const body=encodeURIComponent(`From: ${first} ${last}\nReply to: ${email}\n\n${message}`);
+  $('#formStatus').textContent='OPENING YOUR EMAIL CLIENT…';
+  window.location.href=`mailto:rohanmalhotracodes@gmail.com?subject=${subject}&body=${body}`;
+});}
 
 const alphabet='ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789$%#@';
 const name=$('#heroName'),finalText=name.dataset.text;
