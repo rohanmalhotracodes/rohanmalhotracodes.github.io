@@ -91,3 +91,10 @@ main{display:flex;flex-direction:column}
 .header nav button:hover .nav-icon{stroke:var(--paper)}
 .big-title .title-icon{font-size:0}
 .big-title .title-icon svg{width:24px;height:24px}
+
+/* Roadmap badges and proof links */
+.badge-row,.card-links{display:flex;align-items:center;flex-wrap:wrap;gap:6px}
+.badge-row b{display:inline-block}
+.card-links{margin-top:12px}
+.card-links a{display:inline-grid;place-items:center;min-height:28px;padding:4px 8px;border:2px solid var(--ink);background:var(--paper);color:var(--ink);font-size:7px;font-weight:700;letter-spacing:.06em;text-decoration:none;box-shadow:2px 2px 0 var(--shadow)}
+.card-links a:hover{background:var(--ink);color:var(--paper)}
