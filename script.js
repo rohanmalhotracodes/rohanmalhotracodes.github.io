@@ -1,12 +1,9 @@
 const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
-const root=document.documentElement,cursor=$('#cursor'),settings=$('#settings');
+const root=document.documentElement,settings=$('#settings');
 $('#settingsOpen').addEventListener('click',()=>settings.classList.toggle('open'));
 $('#settingsClose').addEventListener('click',()=>settings.classList.remove('open'));
 $('#motionToggle').addEventListener('change',e=>root.classList.toggle('still',!e.target.checked));
-$('#cursorToggle').addEventListener('change',e=>cursor.classList.toggle('off',!e.target.checked));
 $('#themeToggle').addEventListener('change',e=>root.classList.toggle('dark',e.target.checked));
-addEventListener('pointermove',e=>{cursor.style.transform=`translate(${e.clientX}px,${e.clientY}px)`});
-$$('a,button,input').forEach(el=>{el.addEventListener('mouseenter',()=>cursor.classList.add('active'));el.addEventListener('mouseleave',()=>cursor.classList.remove('active'))});
 addEventListener('keydown',e=>{if(e.key==='Escape'){settings.classList.remove('open');$('#chatPop').classList.remove('open')}});
 
 const rail=$('#projectRail');
