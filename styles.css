@@ -141,3 +141,36 @@ html{scroll-padding-top:110px}
 .tech-logo{width:42px;height:38px;flex:0 0 42px;display:grid;place-items:center;background:#fff;border:2px solid #fff;box-shadow:2px 2px 0 #777;overflow:hidden}
 .tech-logo svg,.tech-logo img{display:block;width:27px;height:27px;object-fit:contain;filter:none!important}
 @media(max-width:760px){.marquee-set{gap:11px;padding-inline:6px}.tech-logo{width:38px;height:34px;flex-basis:38px}.tech-logo svg,.tech-logo img{width:24px;height:24px}}
+
+/* Protected eye outline and terminal hover */
+.header-eye{position:relative;isolation:isolate}
+.header-eye i{position:relative;z-index:1}
+.header-eye:after{content:"";position:absolute;inset:0;border:2px solid var(--ink);border-radius:50%;z-index:2;pointer-events:none}
+.brand b{transition:background .14s,color .14s,transform .14s,box-shadow .14s}
+.brand:hover b{background:#39d353;color:#050505;transform:translate(-1px,-1px);box-shadow:3px 3px 0 var(--ink)}
+
+/* Focused GitHub calendar and contribution graph */
+.github-activity>.section-bar{margin-bottom:14px}
+.github-calendar-card,.github-radar-card{border:3px solid var(--ink);box-shadow:5px 5px 0 var(--shadow);background:var(--paper)}
+.github-calendar-card{overflow:hidden}
+.github-calendar-header{min-height:66px;padding:13px 16px;border-bottom:2px solid var(--ink);display:flex;align-items:center;justify-content:space-between;gap:16px}
+.github-calendar-header>div:first-child{display:grid;gap:4px}
+.github-calendar-header strong{font-size:15px;letter-spacing:.02em}
+.github-calendar-header>div:first-child span{font-size:8px;color:#666;font-weight:700}
+.github-calendar-card .calendar-scroll{overflow-x:auto;padding:24px 16px 18px;scrollbar-width:thin}
+.calendar-layout{display:grid;grid-template-columns:38px max-content;gap:9px;align-items:end;width:max-content;min-width:100%}
+.calendar-weekdays{height:95px;position:relative;font-size:8px;font-weight:700;color:#666}
+.calendar-weekdays span{position:absolute;right:0}.calendar-weekdays span:nth-child(1){top:15px}.calendar-weekdays span:nth-child(2){top:43px}.calendar-weekdays span:nth-child(3){top:71px}
+.calendar-map{display:grid;gap:7px;width:max-content}
+.github-calendar-card .calendar-months{height:12px;width:739px}
+.github-calendar-card .contribution-calendar{grid-template-rows:repeat(7,11px);grid-auto-columns:11px;gap:3px}
+.calendar-footer{min-height:46px;border-top:2px solid var(--ink);background:var(--paper)!important;color:var(--ink)!important;padding:10px 16px!important;display:flex!important;align-items:center!important;justify-content:space-between!important;gap:15px;font-size:8px!important;font-weight:700;letter-spacing:.06em}
+.github-radar-card{margin:16px 0 0;padding:0;overflow:hidden}
+.github-radar-card figcaption{min-height:55px;padding:12px 16px;border-bottom:2px solid var(--ink);display:flex;align-items:center;justify-content:space-between;gap:12px}
+.github-radar-card figcaption b{font-size:13px;letter-spacing:.08em}.github-radar-card figcaption span{font-size:8px;font-weight:700;color:#666}
+.contribution-radar{display:block;width:min(100%,720px);height:auto;margin:8px auto 12px;overflow:visible}
+.radar-grid path,.radar-grid line{fill:none;stroke:color-mix(in srgb,var(--ink) 28%,transparent);stroke-width:1.5;vector-effect:non-scaling-stroke}
+.radar-area{fill:color-mix(in srgb,#39d353 34%,transparent);stroke:#1f883d;stroke-width:3;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.radar-points circle{fill:var(--paper);stroke:#1f883d;stroke-width:3;vector-effect:non-scaling-stroke}
+.radar-copy{fill:var(--ink);font:700 9px 'Space Mono',monospace}.radar-copy .radar-value{font-size:14px}
+@media(max-width:760px){.github-calendar-header{align-items:flex-start}.github-calendar-header strong{font-size:12px}.calendar-layout{min-width:max-content}.calendar-footer{align-items:flex-start!important;flex-direction:column}.github-radar-card figcaption{align-items:flex-start;flex-direction:column}.contribution-radar{width:100%;margin-block:6px}.radar-copy{font-size:8px}.radar-copy .radar-value{font-size:12px}}
