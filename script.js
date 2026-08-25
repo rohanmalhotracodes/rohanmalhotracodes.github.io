@@ -42,13 +42,18 @@ addEventListener('resize',requestNavUpdate,{passive:true});
 updateActiveNav();
 
 const contactForm=$('#contactForm');
-if(contactForm){contactForm.addEventListener('submit',event=>{
+if(contactForm){contactForm.addEventListener('submit',async event=>{
   event.preventDefault();
   const first=$('#contactFirstName').value.trim(),last=$('#contactLastName').value.trim(),email=$('#contactEmail').value.trim(),message=$('#contactMessage').value.trim();
-  const subject=encodeURIComponent(`Portfolio message from ${first} ${last}`);
-  const body=encodeURIComponent(`From: ${first} ${last}\nReply to: ${email}\n\n${message}`);
-  $('#formStatus').textContent='OPENING YOUR EMAIL CLIENT…';
-  window.location.href=`mailto:rohanmalhotra430@gmail.com?subject=${subject}&body=${body}`;
+  const status=$('#formStatus'),submit=contactForm.querySelector('button[type="submit"]');
+  status.textContent='SENDING MESSAGE…';submit.disabled=true;
+  try{
+    const response=await fetch('https://formsubmit.co/ajax/rohanmalhotra430@gmail.com',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({name:`${first} ${last}`,email,message,_subject:`Portfolio message from ${first} ${last}`})});
+    if(!response.ok)throw new Error('Submission failed');
+    contactForm.reset();status.textContent='MESSAGE SENT — THANK YOU.';
+  }catch(error){
+    status.textContent='MESSAGE COULD NOT BE SENT. PLEASE TRY AGAIN.';
+  }finally{submit.disabled=false}
 });}
 
 const alphabet='ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789$%#@';
