@@ -84,3 +84,10 @@ main{display:flex;flex-direction:column}
 
 @media(max-width:760px){.marquee-track{-webkit-animation-duration:24s;animation-duration:24s}.proof-logos{display:grid;grid-template-columns:repeat(4,1fr)}.proof-logos>span b{font-size:6px}.activity-chart{grid-template-rows:auto 140px!important}.chart-plot{height:130px!important}.achievement-logo{height:58px!important}}
 @media(prefers-reduced-motion:reduce){.marquee-track{-webkit-animation:none!important;animation:none!important}}
+
+/* Consistent interface and roadmap icons */
+.nav-icon,.title-icon svg{display:block;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.nav-icon{width:19px;height:19px}
+.header nav button:hover .nav-icon{stroke:var(--paper)}
+.big-title .title-icon{font-size:0}
+.big-title .title-icon svg{width:24px;height:24px}
