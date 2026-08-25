@@ -21,10 +21,6 @@ addEventListener('keydown',e=>{if(e.key==='Escape'){settings.classList.remove('o
 const rail=$('#projectRail');
 $('#projectNext').addEventListener('click',()=>rail.scrollBy({left:366,behavior:'smooth'}));
 $('#projectPrev').addEventListener('click',()=>rail.scrollBy({left:-366,behavior:'smooth'}));
-let dragging=false,startX=0,startScroll=0;
-rail.addEventListener('pointerdown',e=>{dragging=true;startX=e.clientX;startScroll=rail.scrollLeft;rail.setPointerCapture?.(e.pointerId)});
-rail.addEventListener('pointermove',e=>{if(dragging)rail.scrollLeft=startScroll-(e.clientX-startX)});
-rail.addEventListener('pointerup',()=>dragging=false);rail.addEventListener('pointercancel',()=>dragging=false);
 
 const navLinks=$$('.header nav a[href^="#"]');
 const navTargets=navLinks.map(link=>({link,target:$(link.getAttribute('href'))})).filter(item=>item.target);
