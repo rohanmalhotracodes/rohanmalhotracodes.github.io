@@ -35,6 +35,8 @@ main{display:flex;flex-direction:column}
 @media(prefers-reduced-motion:reduce){.marquee-track{animation:none}}
 
 .journey-card,.journey-card .org-mark,.achievement-logo{min-width:0}
+.timeline article{grid-template-columns:160px 35px minmax(0,1fr)}
+.timeline time{font-size:11px;white-space:nowrap}
 .journey-card .org-mark{width:68px;height:54px;padding:6px;overflow:hidden;box-sizing:border-box}
 .journey-card .org-mark.square{width:54px;height:54px}
 .journey-card .org-mark img{display:block;width:auto;height:auto;max-width:54px;max-height:40px;object-fit:contain;object-position:center;filter:none}
@@ -57,6 +59,7 @@ main{display:flex;flex-direction:column}
 
 @media(max-width:1080px){.hero{grid-template-columns:1fr 1fr}.intro{grid-column:auto;border-right:4px solid var(--ink);border-bottom:0}.quick{margin:20px}.journey-card .org-mark{justify-self:start}}
 @media(max-width:760px){.hero{grid-template-columns:1fr}.intro{border-right:0;border-bottom:4px solid var(--ink)}.marquee-track{animation-duration:24s}.activity-chart{min-height:180px}.chart-plot{gap:8px;padding-inline:8px}.chart-plot i span{font-size:6px}.journey-card .org-mark{display:grid!important}.achievement-logo{height:50px}.achievement-logo img{max-width:105px;max-height:36px}}
+@media(max-width:760px){.timeline article{grid-template-columns:132px 24px minmax(0,1fr)}.timeline time{font-size:9px}}
 
 /* Cross-browser cache refresh and containment pass */
 .skills-marquee{display:block;position:relative;z-index:1;min-height:43px;padding:0;background:var(--ink);color:var(--paper)}
