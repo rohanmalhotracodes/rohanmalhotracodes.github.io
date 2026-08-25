@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 120" role="img" aria-labelledby="title">
+  <title id="title">Iteration Machine, now Tin Computer</title>
+  <rect width="520" height="120" fill="#fff"/>
+  <rect x="14" y="14" width="92" height="92" rx="20" fill="#111"/>
+  <text x="37" y="78" fill="#fff" font-family="Arial,Helvetica,sans-serif" font-size="48" font-weight="800">ti</text>
+  <text x="130" y="51" fill="#111" font-family="Arial,Helvetica,sans-serif" font-size="21" font-weight="700" letter-spacing="2">ITERATION MACHINE</text>
+  <text x="130" y="84" fill="#111" font-family="Arial,Helvetica,sans-serif" font-size="31" font-weight="800">TIN COMPUTER</text>
+</svg>
