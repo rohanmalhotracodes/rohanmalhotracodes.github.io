@@ -240,3 +240,35 @@ html{scroll-padding-top:110px}
 @media(max-width:900px){.contact-layout{grid-template-columns:1fr}.contact-panels{grid-template-columns:1fr 1fr;grid-template-rows:auto}.contact-panels h3{font-size:17px}}
 @media(max-width:760px){.header{display:flex}.header-eyes{display:none!important}.project-rail{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:87vw}.contact-section{padding:13px 10px 24px}.contact-section>.section-bar>span{display:none}.contact-layout{gap:20px}.contact-form{padding:20px}.form-pair{grid-template-columns:1fr}.contact-panels{grid-template-columns:1fr;grid-template-rows:auto;gap:20px}.contact-panels article{padding:28px 18px}.contact-panels h3{font-size:16px;margin-bottom:22px}.contact-action,.linkedin-action{min-height:58px;font-size:12px}.contact-form textarea{min-height:150px}}
 @media(prefers-reduced-motion:reduce){.bg-words span{animation:none!important}}
+
+/* January-first GitHub dashboard: calendar and contribution mix share one row */
+.github-dashboard{display:grid;grid-template-columns:minmax(0,1.32fr) minmax(350px,.68fr);gap:16px;align-items:stretch}
+.github-dashboard .github-calendar-card,.github-dashboard .github-radar-card{height:100%;min-width:0}
+.github-dashboard .github-calendar-card{display:grid;grid-template-rows:auto 1fr auto}
+.github-dashboard .github-calendar-card .calendar-scroll{display:flex;align-items:center}
+.github-dashboard .github-calendar-card .calendar-months{width:490px}
+.github-dashboard .github-radar-card{margin:0;display:grid;grid-template-rows:auto 1fr}
+.github-dashboard .github-radar-card .contribution-radar{align-self:center;width:100%;max-width:520px;margin:4px auto}
+
+/* Achievement marks use their natural aspect ratios without clipping */
+.achievement-logo{height:72px!important;padding:7px 10px!important}
+.achievement-logo img.achievement-logo-unstop{max-width:168px!important;max-height:48px!important}
+.achievement-logo img.achievement-logo-amazon{max-width:180px!important;max-height:52px!important}
+.achievement-logo img.achievement-logo-flipkart{max-width:174px!important;max-height:50px!important}
+.achievement-logo img.achievement-logo-coral{max-width:180px!important;max-height:52px!important}
+
+/* Center school and institute crests inside their square frames */
+.education-roadmap .journey-card .org-mark.square{display:grid!important;place-items:center!important;justify-self:center;align-self:start;padding:5px!important;overflow:hidden}
+.education-roadmap .journey-card .org-mark.square img{display:block!important;width:auto!important;height:auto!important;max-width:42px!important;max-height:42px!important;margin:auto!important;justify-self:center;align-self:center;object-fit:contain!important;object-position:center center!important}
+
+@media(max-width:1080px){
+  .github-dashboard{grid-template-columns:1fr}
+  .github-dashboard .github-radar-card{margin:0}
+  .education-roadmap .journey-card .org-mark.square{justify-self:start}
+}
+@media(max-width:760px){
+  .github-dashboard{gap:13px}
+  .github-dashboard .github-calendar-card .calendar-months{width:490px}
+  .achievement-logo{height:64px!important}
+  .achievement-logo img.achievement-logo-unstop,.achievement-logo img.achievement-logo-amazon,.achievement-logo img.achievement-logo-flipkart,.achievement-logo img.achievement-logo-coral{max-width:142px!important;max-height:44px!important}
+}
