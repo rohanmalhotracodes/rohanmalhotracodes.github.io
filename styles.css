@@ -120,3 +120,9 @@ main{display:flex;flex-direction:column}
   .education-roadmap .journey-card>div>b{font-size:8px;letter-spacing:.08em}
 }
 @media(max-width:760px){.timeline time{font-size:8px;padding-right:9px}}
+
+/* Persistent navigation */
+html{scroll-padding-top:110px}
+.header{position:sticky;top:12px;z-index:260}
+.settings{top:100px}
+@media(max-width:760px){html{scroll-padding-top:92px}.header{top:8px}.settings{top:92px}}
