@@ -68,7 +68,7 @@ main{display:flex;flex-direction:column}
 @keyframes skillsTicker{to{-webkit-transform:translateX(-50%);transform:translateX(-50%)}}
 
 .proof-logos{padding:10px 12px;gap:8px;justify-content:space-around;overflow:hidden}
-.proof-logos>span{min-width:0;display:grid;grid-template-rows:31px auto;place-items:center;gap:4px}
+.proof-logos>span{min-width:0;display:grid;place-items:center}
 .proof-logos>span img{display:block;width:auto;height:auto;max-width:54px;max-height:29px;object-fit:contain;filter:none}
 .proof-logos>span b{font-size:7px;white-space:nowrap}
 .proof-logos .tf-dark{display:none!important}.dark .proof-logos .tf-light{display:none!important}.dark .proof-logos .tf-dark{display:block!important}
