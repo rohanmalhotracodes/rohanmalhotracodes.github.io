@@ -57,3 +57,30 @@ main{display:flex;flex-direction:column}
 
 @media(max-width:1080px){.hero{grid-template-columns:1fr 1fr}.intro{grid-column:auto;border-right:4px solid var(--ink);border-bottom:0}.quick{margin:20px}.journey-card .org-mark{justify-self:start}}
 @media(max-width:760px){.hero{grid-template-columns:1fr}.intro{border-right:0;border-bottom:4px solid var(--ink)}.marquee-track{animation-duration:24s}.activity-chart{min-height:180px}.chart-plot{gap:8px;padding-inline:8px}.chart-plot i span{font-size:6px}.journey-card .org-mark{display:grid!important}.achievement-logo{height:50px}.achievement-logo img{max-width:105px;max-height:36px}}
+
+/* Cross-browser cache refresh and containment pass */
+.skills-marquee{display:block;position:relative;z-index:1;min-height:43px;padding:0;background:var(--ink);color:var(--paper)}
+.marquee-track{min-height:43px;padding:0 20px;gap:22px;-webkit-animation:skillsTicker 34s linear infinite;animation:skillsTicker 34s linear infinite;-webkit-transform:translateZ(0);transform:translateZ(0)}
+@-webkit-keyframes skillsTicker{to{-webkit-transform:translateX(-50%);transform:translateX(-50%)}}
+@keyframes skillsTicker{to{-webkit-transform:translateX(-50%);transform:translateX(-50%)}}
+
+.proof-logos{padding:10px 12px;gap:8px;justify-content:space-around;overflow:hidden}
+.proof-logos>span{min-width:0;display:grid;grid-template-rows:31px auto;place-items:center;gap:4px}
+.proof-logos>span img{display:block;width:auto;height:auto;max-width:54px;max-height:29px;object-fit:contain;filter:none}
+.proof-logos>span b{font-size:7px;white-space:nowrap}
+.proof-logos .tf-dark{display:none!important}.dark .proof-logos .tf-light{display:none!important}.dark .proof-logos .tf-dark{display:block!important}
+
+.activity-chart{display:grid!important;grid-template-columns:32px minmax(0,1fr)!important;grid-template-rows:auto 150px!important;overflow:hidden;box-sizing:border-box}
+.activity-chart figcaption{display:block!important;grid-column:1/-1!important}
+.chart-y{display:-webkit-flex!important;display:flex!important;-webkit-flex-direction:column;flex-direction:column;-webkit-justify-content:space-between;justify-content:space-between;height:128px;box-sizing:border-box}
+.chart-plot{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;height:140px!important;min-width:0;background:repeating-linear-gradient(to top,transparent 0,transparent 33px,rgba(0,0,0,.13) 34px,rgba(0,0,0,.13) 35px)}
+.chart-plot i{display:block!important;align-self:end;width:100%;max-width:84px;justify-self:center;box-sizing:border-box}
+.chart-plot i:nth-child(1){height:70%!important}.chart-plot i:nth-child(2){height:20%!important}.chart-plot i:nth-child(3),.chart-plot i:nth-child(4){height:5%!important}
+
+.achievement-logo{height:62px!important;padding:8px!important;margin:0!important;border:0!important;display:grid!important;place-items:center!important;overflow:hidden!important;box-sizing:border-box}
+.achievement-logo img{display:block!important;width:auto!important;height:auto!important;max-width:112px!important;max-height:38px!important;object-fit:contain!important;object-position:center!important}
+.achievement-logo.text-logo{font-size:25px!important}
+.achievement-cards>a>span,.achievement-cards>article>span{border-top:2px solid var(--ink)!important;margin-top:11px!important;padding-top:9px!important}
+
+@media(max-width:760px){.marquee-track{-webkit-animation-duration:24s;animation-duration:24s}.proof-logos{display:grid;grid-template-columns:repeat(4,1fr)}.proof-logos>span b{font-size:6px}.activity-chart{grid-template-rows:auto 140px!important}.chart-plot{height:130px!important}.achievement-logo{height:58px!important}}
+@media(prefers-reduced-motion:reduce){.marquee-track{-webkit-animation:none!important;animation:none!important}}
