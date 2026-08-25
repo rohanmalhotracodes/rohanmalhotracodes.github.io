@@ -392,22 +392,17 @@ html{scroll-padding-top:110px}
   .header nav button{width:36px;padding:0}
 }
 
-/* Put mobile education dates above their cards so they never collide with the rail. */
+/* Keep education on the same left-date / single-rail structure as Experience. */
 @media(max-width:760px){
   .education-roadmap .education-timeline article{
-    grid-template-columns:22px minmax(0,1fr);
-    grid-template-rows:auto auto;
-    grid-template-areas:"date date" "rail card";
-    min-height:0;
-    padding-bottom:24px;
+    grid-template-columns:96px 22px minmax(0,1fr);
   }
   .education-roadmap .education-timeline time{
-    grid-area:date;
-    padding:0 0 10px 30px;
-    text-align:left;
-    font-size:9px;
-    white-space:nowrap;
+    padding:8px 8px 0 0;
+    text-align:right;
+    font-size:8px;
+    line-height:1.45;
+    white-space:normal;
   }
-  .education-roadmap .education-timeline .dot{grid-area:rail;min-height:100%}
-  .education-roadmap .education-timeline .journey-card{grid-area:card;width:100%}
+  .education-roadmap .education-timeline time>span{display:block;white-space:nowrap}
 }
