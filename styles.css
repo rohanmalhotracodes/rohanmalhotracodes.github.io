@@ -370,3 +370,6 @@ html{scroll-padding-top:110px}
 .project-card figure.omnisprint-banner{padding:18px 24px}
 .project-card figure.omnisprint-banner img{width:72%!important;height:auto!important;max-height:92%!important;object-fit:contain!important}
 @media(max-width:760px){.project-card figure.omnisprint-banner img{width:84%!important}}
+
+/* Keep the fixed back-to-top control in the outer right gutter. */
+.to-top{right:18px}
