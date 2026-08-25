@@ -39,3 +39,25 @@ if(calendar){
     }
   });
 }
+
+const headerEyes=$$('#headerEyes .header-eye');
+if(headerEyes.length&&matchMedia('(pointer:fine)').matches){
+  let pointerX=0,pointerY=0,eyeFrame=0;
+  const updateEyes=()=>{
+    headerEyes.forEach(eye=>{
+      const rect=eye.getBoundingClientRect();
+      const dx=pointerX-(rect.left+rect.width/2),dy=pointerY-(rect.top+rect.height/2);
+      const distance=Math.hypot(dx,dy)||1,travel=Math.min(6,distance);
+      eye.style.setProperty('--eye-x',`${dx/distance*travel}px`);
+      eye.style.setProperty('--eye-y',`${dy/distance*travel}px`);
+    });
+    eyeFrame=0;
+  };
+  addEventListener('pointermove',event=>{
+    pointerX=event.clientX;pointerY=event.clientY;
+    if(!eyeFrame)eyeFrame=requestAnimationFrame(updateEyes);
+  },{passive:true});
+  document.documentElement.addEventListener('mouseleave',()=>headerEyes.forEach(eye=>{
+    eye.style.setProperty('--eye-x','0px');eye.style.setProperty('--eye-y','0px');
+  }));
+}
