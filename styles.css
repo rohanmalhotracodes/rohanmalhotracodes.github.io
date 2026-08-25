@@ -210,7 +210,7 @@ html{scroll-padding-top:110px}
 .background-still .bg-words span{animation-play-state:paused!important}
 @keyframes ambientDrift{0%{transform:translate3d(-10px,-6px,0)}50%{transform:translate3d(34px,22px,0)}100%{transform:translate3d(-18px,42px,0)}}
 
-.project-rail{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-flow:row;grid-auto-columns:auto}
+.project-rail{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-flow:row;grid-auto-columns:auto;overflow:visible;padding:0 8px 8px 0}
 
 .contact-section{order:7;border:4px solid var(--ink);border-top:0;padding:18px 18px 30px;background:var(--paper)}
 .contact-section>.section-bar>span{font-size:8px;font-weight:700;color:#666;letter-spacing:.06em}
@@ -238,7 +238,7 @@ html{scroll-padding-top:110px}
 
 @media(min-width:761px) and (max-width:1080px){.header nav a{display:grid!important}.header nav a,.header nav button{padding-inline:9px;font-size:9px}.header-eyes{display:none!important}.header{grid-template-columns:max-content 1fr max-content}}
 @media(max-width:900px){.contact-layout{grid-template-columns:1fr}.contact-panels{grid-template-columns:1fr 1fr;grid-template-rows:auto}.contact-panels h3{font-size:17px}}
-@media(max-width:760px){.header{display:flex}.header-eyes{display:none!important}.project-rail{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:87vw}.contact-section{padding:13px 10px 24px}.contact-section>.section-bar>span{display:none}.contact-layout{gap:20px}.contact-form{padding:20px}.form-pair{grid-template-columns:1fr}.contact-panels{grid-template-columns:1fr;grid-template-rows:auto;gap:20px}.contact-panels article{padding:28px 18px}.contact-panels h3{font-size:16px;margin-bottom:22px}.contact-action,.linkedin-action{min-height:58px;font-size:12px}.contact-form textarea{min-height:150px}}
+@media(max-width:760px){.header{display:flex}.header-eyes{display:none!important}.project-rail{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:87vw;overflow-x:auto;padding:0 8px 9px 0}.contact-section{padding:13px 10px 24px}.contact-section>.section-bar>span{display:none}.contact-layout{gap:20px}.contact-form{padding:20px}.form-pair{grid-template-columns:1fr}.contact-panels{grid-template-columns:1fr;grid-template-rows:auto;gap:20px}.contact-panels article{padding:28px 18px}.contact-panels h3{font-size:16px;margin-bottom:22px}.contact-action,.linkedin-action{min-height:58px;font-size:12px}.contact-form textarea{min-height:150px}}
 @media(prefers-reduced-motion:reduce){.bg-words span{animation:none!important}}
 
 /* January-first GitHub dashboard: calendar and contribution mix share one row */
