@@ -1,87 +1,96 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Rohan Malhotra — computer engineer, open-source contributor and competitive programmer.">
-<meta name="theme-color" content="#090b0d">
-<title>Rohan Malhotra — Engineering Portfolio</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
-<link rel="stylesheet" href="extras.css">
-<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"}}</script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Rohan Malhotra — computer engineer building open-source product systems, developer tools and real-time vision software.">
+  <meta name="theme-color" content="#11110f">
+  <title>Rohan Malhotra — Engineering Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<div class="noise"></div><div class="cursor-dot" id="cursorDot"></div>
-<header class="site-header">
-  <a class="brand" href="#top"><span class="prompt">›</span> rohan.dev</a>
-  <nav class="desktop-nav"><a href="#experience">Journey</a><a href="#projects">Projects</a><a href="#proof">Proof</a><a href="#skills">Skills</a><a href="#contact">Contact</a></nav>
-  <div class="header-actions"><button class="icon-button" id="settingsBtn" aria-label="Settings">◌</button><a class="pill-button compact" href="https://github.com/rohanmalhotracodes" target="_blank">GitHub ↗</a></div>
-</header>
-<aside class="settings-panel" id="settingsPanel"><div class="settings-head"><span>INTERFACE SETTINGS</span><button id="settingsClose">×</button></div><label><span>Light theme</span><input type="checkbox" id="themeToggle"></label><label><span>Reduce motion</span><input type="checkbox" id="motionToggle"></label><label><span>Custom cursor</span><input type="checkbox" id="cursorToggle" checked></label></aside>
-<main id="top">
-<section class="hero section-shell">
-  <div class="hero-copy reveal">
-    <p class="eyebrow">Computer Engineering · Open Source · Systems · Competitive Programming</p>
-    <h1>ROHAN<br><span>MALHOTRA</span></h1>
-    <p class="hero-lede">I build software that has to behave correctly: open-source product systems, AI developer tooling, real-time vision pipelines, and engineering projects where measurable outcomes matter.</p>
-    <div class="hero-actions"><a class="pill-button" href="#experience">Explore the journey ↓</a><button class="text-link" id="openAssistantHero">Ask my AI assistant →</button></div>
-  </div>
-  <div class="hero-visual reveal">
-    <canvas id="heroCanvas"></canvas>
-    <div class="visual-overlay"><div><span class="tiny-label">INTERACTIVE WORLD</span><strong>Engineering City</strong><span class="tiny-label">Built as a portfolio navigation metaphor</span></div><button id="openCity">ENTER CITY ↗</button></div>
-  </div>
-  <div class="hero-facts reveal">
-    <article><span>Currently</span><strong>Open-source engineering</strong><small>TrueForge / TrueFoundry contributions around chat/session behavior and sandbox execution.</small></article>
-    <article><span>Previously</span><strong>Bharat Electronics Limited</strong><small>Computer-vision work on road-scene accident detection and real-time inference.</small></article>
-    <article><span>Open source</span><strong>Oppia Foundation</strong><small>Project ownership, full-stack fixes, type-safety migrations, regression handling, and documentation.</small></article>
-    <article><span>Education</span><strong>TIET · B.E. Computer Engineering</strong><small>Engineering, algorithms, systems, ML and production software.</small></article>
-  </div>
-  <div class="quick-proof reveal"><span>QUICK PROOF / NUMBERS THAT TRAVEL</span><strong>57<small>TCS CodeVita · Global</small></strong><strong>87<small>Yandex CodeRun · Global</small></strong><strong>8<small>Unstop E-School Leaders</small></strong><strong>Top 50<small>5,400+ hackathon entries</small></strong></div>
-  <div class="logo-proof reveal"><span>Organizations / platforms</span>
-    <a class="logo-chip" href="#experience"><img src="https://www.google.com/s2/favicons?domain=bel-india.in&sz=128" alt="BEL"><strong>Bharat Electronics</strong></a>
-    <a class="logo-chip" href="https://www.oppia.org" target="_blank"><img src="https://www.google.com/s2/favicons?domain=oppia.org&sz=128" alt="Oppia"><strong>Oppia</strong></a>
-    <a class="logo-chip" href="https://www.truefoundry.com" target="_blank"><img src="https://www.google.com/s2/favicons?domain=truefoundry.com&sz=128" alt="TrueFoundry"><strong>TrueFoundry</strong></a>
-    <a class="logo-chip" href="https://www.thapar.edu" target="_blank"><img src="https://www.google.com/s2/favicons?domain=thapar.edu&sz=128" alt="TIET"><strong>TIET</strong></a>
-    <a class="logo-chip" href="https://www.zs.com" target="_blank"><img src="https://www.google.com/s2/favicons?domain=zs.com&sz=128" alt="ZS"><strong>ZS</strong></a>
-  </div>
-  <p class="hero-note">Inspired by modern interactive engineering portfolios, rebuilt around my own work, identity, and content.</p>
-</section>
-<section class="section-block" id="experience"><div class="section-shell"><div class="section-heading reveal"><div class="section-number">01 / JOURNEY</div><p class="eyebrow">EXPERIENCE FIRST</p><h2>Work that moved from models to production behavior.</h2><p>A chronological roadmap of the engineering environments where I learned to ship, debug, measure and own outcomes.</p></div>
-<div class="roadmap">
-  <article class="roadmap-item current reveal"><div class="roadmap-date">2026 — NOW</div><div class="roadmap-dot"></div><div class="roadmap-card"><div class="role-top"><span>OPEN SOURCE / PRODUCT ENGINEERING</span><span>REMOTE</span></div><div class="org-title"><img class="org-logo" src="https://www.google.com/s2/favicons?domain=truefoundry.com&sz=128" alt="TrueFoundry"><div><h3>TrueForge / TrueFoundry</h3><div class="org-sub">Conversation lifecycle · session behavior · sandbox reliability</div></div></div><p>Contributing to product behavior around persisted conversations, cancellation semantics and sandbox execution. I focus on issues that sit at the boundary between UX and correctness.</p><div class="metric-row"><span>Chat lifecycle</span><span>Sandbox behavior</span><span>Open source</span></div><a class="inline-arrow" href="https://github.com/truefoundry/trueforge/pulls?q=is%3Apr+author%3Arohanmalhotracodes" target="_blank">View contributions ↗</a></div></article>
-  <article class="roadmap-item reveal"><div class="roadmap-date">JAN — MAY 2026</div><div class="roadmap-dot"></div><div class="roadmap-card"><div class="role-top"><span>PROJECT OWNER & COLLABORATOR</span><span>OPEN SOURCE</span></div><div class="org-title"><img class="org-logo" src="https://www.google.com/s2/favicons?domain=oppia.org&sz=128" alt="Oppia"><div><h3>Oppia Foundation</h3><div class="org-sub">Full-stack fixes · TypeScript · RTE · regressions · documentation</div></div></div><p>Worked across strict-mode migrations, API payload changes, rich-text editor behavior and regressions, while owning issue tracks and coordinating changes across dependent files.</p><div class="metric-row"><span>14+ resolved issues</span><span>12+ merged high-impact PRs</span><span>Project ownership</span></div><a class="inline-arrow" href="https://github.com/oppia/oppia/pulls?q=is%3Apr+author%3Arohanmalhotracodes" target="_blank">Browse Oppia PRs ↗</a></div></article>
-  <article class="roadmap-item reveal"><div class="roadmap-date">JUN — JUL 2025</div><div class="roadmap-dot"></div><div class="roadmap-card"><div class="role-top"><span>COMPUTER VISION TRAINEE</span><span>INDIA</span></div><div class="org-title"><img class="org-logo" src="https://www.google.com/s2/favicons?domain=bel-india.in&sz=128" alt="BEL"><div><h3>Bharat Electronics Limited</h3><div class="org-sub">YOLO · DenseNet · KITTI · real-time vision systems</div></div></div><p>Built and tuned a road-scene accident-detection pipeline and evaluated model behavior under real-time constraints.</p><div class="metric-row"><span>88% detection accuracy</span><span>0.92 F1</span><span>180 ms/frame</span></div></div></article>
-</div></div></section>
-<section class="section-block" id="projects"><div class="section-shell"><div class="section-heading split-heading reveal"><div><div class="section-number">02 / BUILD</div><p class="eyebrow">SELECTED PROJECTS</p><h2>Systems I cared enough to finish.</h2></div><div class="carousel-controls"><button id="prevProject">←</button><button id="nextProject">→</button></div></div>
-<div class="project-track" id="projectTrack">
-<a class="project-card featured reveal" href="https://github.com/rohanmalhotracodes/omnisprint" target="_blank"><div class="project-logo">OS</div><div class="project-index">01 / 05</div><div class="project-meta"><span>AI DEVTOOLS</span><span>FASTAPI · REACT</span></div><h3>OmniSprint</h3><p>AI sprint-risk intelligence that combines roadmap, GitHub and CI signals to surface blockers, stale work and deadline risk with evidence-backed follow-ups.</p><div class="project-badges"><span>Top 50 / 5,400+</span><span>DSH Hacks special prize</span><span>Cross-source retrieval</span></div><span class="project-arrow">↗</span></a>
-<a class="project-card reveal" href="https://github.com/rohanmalhotracodes/Capstone" target="_blank"><div class="project-logo">SS</div><div class="project-index">02 / 05</div><div class="project-meta"><span>ROBOTICS / IOT</span><span>FASTAPI · MQTT</span></div><h3>Solar Sweeper</h3><p>Autonomous solar-panel cleaning system with hybrid soiling detection, telemetry, FSM-driven control, cleaning hardware and a web dashboard.</p><div class="project-badges"><span>4184-panel site</span><span>MQTT telemetry</span><span>Sub-2 s target latency</span></div><span class="project-arrow">↗</span></a>
-<a class="project-card reveal" href="https://github.com/rohanmalhotracodes/smriti" target="_blank"><div class="project-logo">SM</div><div class="project-index">03 / 05</div><div class="project-meta"><span>AI / KNOWLEDGE</span><span>REACT · FASTAPI</span></div><h3>Smriti</h3><p>Knowledge-oriented AI system developed during the Cognee hackathon, combining a React interface, FastAPI backend, Postgres and Cognee-powered memory.</p><div class="project-badges"><span>Cognee</span><span>Postgres</span><span>Full stack</span></div><span class="project-arrow">↗</span></a>
-<a class="project-card reveal" href="https://github.com/rohanmalhotracodes/Collision-Detection-System" target="_blank"><div class="project-logo">CV</div><div class="project-index">04 / 05</div><div class="project-meta"><span>COMPUTER VISION</span><span>YOLO · DENSENET</span></div><h3>Collision Detection</h3><p>Road-scene collision and accident detection work based on computer-vision models, evaluation metrics and real-time inference constraints.</p><div class="project-badges"><span>Vision systems</span><span>Evaluation</span><span>Inference</span></div><span class="project-arrow">↗</span></a>
-<a class="project-card reveal" href="https://github.com/rohanmalhotracodes/zero-cost-crm" target="_blank"><div class="project-logo">CRM</div><div class="project-index">05 / 05</div><div class="project-meta"><span>PRODUCT BUILD</span><span>WEB APP</span></div><h3>Zero-Cost CRM</h3><p>A lightweight CRM experiment focused on making useful sales workflow software accessible without expensive infrastructure.</p><div class="project-badges"><span>Product thinking</span><span>Full stack</span></div><span class="project-arrow">↗</span></a>
-</div></div></section>
-<section class="section-block" id="proof"><div class="section-shell"><div class="section-heading reveal"><div class="section-number">03 / PROOF</div><p class="eyebrow">RANKS / RECOGNITION</p><h2>Proof outside the résumé.</h2><p>Competitive programming, hackathons, selection programs and recognitions that are independently verifiable.</p></div>
-<div class="achievement-grid">
-<a class="achievement-card large reveal" href="https://lnkd.in/p/g2EciHZb" target="_blank"><img class="achievement-logo" src="https://www.google.com/s2/favicons?domain=unstop.com&sz=128" alt="Unstop"><span class="achievement-kicker">UNSTOP · 2026</span><strong>#8</strong><h3>Top 100 Unstoppable E-School Leaders</h3><p>Ranked 8 among the national list.</p><i>Open recognition ↗</i></a>
-<a class="achievement-card reveal" href="https://www.tcs.com" target="_blank"><img class="achievement-logo" src="https://www.google.com/s2/favicons?domain=tcs.com&sz=128" alt="TCS"><span class="achievement-kicker">CODEVITA</span><strong>#57</strong><h3>Global Rank</h3><p>TCS CodeVita Round 2.</p></a>
-<a class="achievement-card reveal" href="https://yandex.com" target="_blank"><img class="achievement-logo" src="assets/yandex.svg" alt="Yandex"><span class="achievement-kicker">Yandex CodeRun</span><strong>#87</strong><h3>Global Rank</h3><p>Winter Challenge.</p></a>
-<a class="achievement-card reveal" href="https://www.zs.com" target="_blank"><img class="achievement-logo" src="https://www.google.com/s2/favicons?domain=zs.com&sz=128" alt="ZS"><span class="achievement-kicker">ZS CAMPUS BEATS</span><strong>Top 100</strong><h3>Campus Beats</h3><p>Top-100 recognition and PPO pathway.</p></a>
-<a class="achievement-card reveal" href="https://www.amazon.science" target="_blank"><img class="achievement-logo" src="https://www.google.com/s2/favicons?domain=amazon.science&sz=128" alt="Amazon"><span class="achievement-kicker">AMAZON ML</span><strong>Selected</strong><h3>ML Summer School</h3><p>Selected for Amazon ML Summer School 2025.</p></a>
-</div></div></section>
-<section class="feature-strip"><div class="section-shell"><div class="feature-links reveal"><a href="https://180dcsrcc.in/pratyaksh-2025/" target="_blank"><span>WRITING</span><strong>Pratyaksh 2025 — published article</strong><i>↗</i></a><a href="https://github.com/rohanmalhotracodes" target="_blank"><span>CODE</span><strong>GitHub — projects, forks and open-source work</strong><i>↗</i></a><a href="https://leetcode.com/u/rohanmalhotracodes/" target="_blank"><span>ALGORITHMS</span><strong>LeetCode — competitive programming profile</strong><i>↗</i></a></div></div></section>
-<section class="section-block" id="skills"><div class="section-shell"><div class="section-heading reveal"><div class="section-number">04 / TOOLKIT</div><p class="eyebrow">SKILLS</p><h2>What I reach for when I need to ship.</h2></div><div class="skills-grid">
-<article class="reveal"><span class="skill-number">01</span><h3>Languages</h3><p>C++, Python, Java, JavaScript / TypeScript, SQL, HTML/CSS, R.</p></article><article class="reveal"><span class="skill-number">02</span><h3>Frontend</h3><p>React, Material UI, interaction design, responsive interfaces and Figma-driven UX thinking.</p></article><article class="reveal"><span class="skill-number">03</span><h3>Backend</h3><p>FastAPI, Flask, Node.js, REST APIs, Postgres, webhooks, async behavior and integration debugging.</p></article><article class="reveal"><span class="skill-number">04</span><h3>Open Source</h3><p>Git/GitHub, issue ownership, PR iteration, regression fixes, tests, reviews and documentation.</p></article><article class="reveal"><span class="skill-number">05</span><h3>ML / Vision</h3><p>pandas, NumPy, Matplotlib, CNNs, sequence models, YOLO-style detection and model evaluation.</p></article><article class="reveal"><span class="skill-number">06</span><h3>Infra</h3><p>Docker, GCP basics, CI workflows, MQTT, Linux tooling and developer-environment setup.</p></article>
-</div></div></section>
-<section class="section-block"><div class="section-shell education-section reveal"><div class="education-copy"><div class="section-number">05 / EDUCATION</div><p class="eyebrow">THAPAR INSTITUTE OF ENGINEERING & TECHNOLOGY</p><h2>B.E. Computer Engineering</h2><p>2023 — 2027 · Patiala, India. Coursework and projects spanning algorithms, systems, machine learning, optimization and engineering design.</p><a class="logo-chip" href="https://www.thapar.edu" target="_blank"><img src="https://www.google.com/s2/favicons?domain=thapar.edu&sz=128" alt="TIET"><strong>Visit TIET ↗</strong></a></div><div class="education-mark">TIET</div></div></section>
-<section class="section-block" id="contact"><div class="section-shell contact-section"><div class="contact-copy reveal"><div class="section-number">06 / CONTACT</div><p class="eyebrow">LET'S BUILD SOMETHING HARD</p><h2>Open to serious engineering conversations.</h2><p>If you care about open source, developer tools, systems behavior, AI infrastructure or difficult product engineering, reach out.</p><div class="badge-feature"><img src="https://github.com/rohanmalhotracodes.png" alt="Rohan"><span>GitHub: @rohanmalhotracodes</span></div></div><div class="contact-links reveal"><a href="https://github.com/rohanmalhotracodes" target="_blank"><span>GitHub</span><strong>rohanmalhotracodes</strong><i>↗</i></a><a href="https://linkedin.com/in/rohanmalhotracodes" target="_blank"><span>LinkedIn</span><strong>Rohan Malhotra</strong><i>↗</i></a><a href="mailto:rohanmalhotracodes@gmail.com"><span>Email</span><strong>rohanmalhotracodes@gmail.com</strong><i>↗</i></a></div></div></section>
-</main>
-<footer class="site-footer section-shell"><span>© 2026 Rohan Malhotra</span><span class="built-line">Built as an interactive engineering portfolio.</span><a href="#top">Back to top ↑</a></footer>
-<button class="assistant-launcher" id="assistantLauncher"><span class="status-dot"></span><span>ASK ROHAN AI</span><b>✦</b></button>
-<section class="assistant-panel" id="assistantPanel" aria-label="Portfolio assistant"><div class="assistant-head"><div><span class="status-dot"></span><div><strong>ROHAN AI</strong><small>PORTFOLIO ASSISTANT</small></div></div><button id="assistantClose">×</button></div><div class="assistant-messages" id="assistantMessages"><div class="message bot">Hey — I can answer questions about Rohan's work, projects, open-source contributions, ranks and technical background.</div></div><div class="assistant-suggestions"><button data-q="What is Rohan's strongest project?">Strongest project</button><button data-q="Summarize his open-source work">Open source</button><button data-q="What are his best achievements?">Achievements</button><button data-q="Why hire Rohan?">Why hire him?</button></div><div class="assistant-note">Answers are generated locally from the portfolio facts on this page.</div><form class="assistant-form" id="assistantForm"><input id="assistantInput" placeholder="Ask about Rohan..." autocomplete="off"><button>→</button></form></section>
-<section class="city-modal" id="cityModal"><canvas id="cityCanvas"></canvas><div class="city-modal-head"><span>ROHAN / ENGINEERING CITY</span><button id="closeCity">ESC / CLOSE</button></div><div class="city-hud"><span><b class="city-key">WASD</b> move · drag to orbit · wheel to zoom</span><strong>Each block represents a part of the portfolio: open source, projects, algorithms, systems and engineering work.</strong></div></section>
-<script type="module" src="app.js"></script>
+  <div class="grain" aria-hidden="true"></div><div class="cursor" id="cursor" aria-hidden="true"></div>
+  <header class="nav">
+    <a class="identity" href="#top"><b>&gt;_</b> Rohan Malhotra</a>
+    <nav aria-label="Main navigation"><a href="#work">Work</a><a href="#projects">Projects</a><a href="#journey">Journey</a><a href="#proof">Proof</a></nav>
+    <div class="nav-actions"><button id="settingsOpen" aria-label="Open display settings">SETTINGS ◌</button><a class="contact-button" href="#contact">CONTACT →</a></div>
+  </header>
+  <aside class="settings" id="settings" aria-label="Display settings">
+    <div><b>DISPLAY</b><button id="settingsClose" aria-label="Close settings">×</button></div>
+    <label>Dark mode <input type="checkbox" id="theme" checked></label>
+    <label>Background motion <input type="checkbox" id="motion" checked></label>
+    <label>Cursor effect <input type="checkbox" id="cursorToggle" checked></label>
+  </aside>
+
+  <main id="top">
+    <section class="hero shell">
+      <div class="orb" aria-hidden="true"><i></i><i></i><i></i></div>
+      <p class="overline reveal">PORTFOLIO // COMPUTER ENGINEERING · INDIA</p>
+      <h1 class="reveal">ROHAN<br><span>MALHOTRA</span></h1>
+      <div class="hero-bottom reveal">
+        <p>Open-source engineer and competitive programmer building dependable product systems, AI developer tools and real-time vision software.</p>
+        <div><a class="primary" href="#work">EXPLORE MY WORK ↓</a><a class="underlined" href="https://github.com/rohanmalhotracodes" target="_blank" rel="noreferrer">GITHUB ↗</a></div>
+      </div>
+      <div class="facts reveal">
+        <article><small>CURRENTLY</small><strong>TrueForge contributor</strong><span>Chat, sessions & sandbox behavior</span></article>
+        <article><small>OPEN SOURCE</small><strong>Oppia Foundation</strong><span>12+ merged high-impact PRs</span></article>
+        <article><small>EDUCATION</small><strong>TIET · B.E. CE</strong><span>Class of 2027</span></article>
+        <article><small>LOCATION</small><strong>India</strong><span>Open to engineering roles</span></article>
+      </div>
+      <div class="scoreboard reveal"><span>// QUICK PROOF</span><b>57<small>CodeVita global</small></b><b>87<small>Yandex global</small></b><b>8<small>Unstop national</small></b><b>Top 50<small>of 5,400+</small></b></div>
+    </section>
+
+    <section class="section shell" id="work">
+      <div class="heading reveal"><p>01 / EXPERIENCE</p><h2>Work where correctness<br>was the feature.</h2></div>
+      <div class="work-grid">
+        <article class="work-lead reveal"><span class="status">● ACTIVE · 2026</span><h3>TrueForge<br><em>/ TrueFoundry</em></h3><p>Contributing at the boundary of UX and systems correctness: conversation lifecycle, session behavior, cancellation semantics and reliable sandbox execution.</p><a href="https://github.com/truefoundry/trueforge/pulls?q=is%3Apr+author%3Arohanmalhotracodes" target="_blank">VIEW CONTRIBUTIONS ↗</a></article>
+        <div class="work-list">
+          <article class="reveal"><span>JAN — MAY 2026</span><div><h3>Oppia Foundation</h3><p>Project Owner & Collaborator</p></div><strong>14+ issues<br>12+ merged PRs</strong><a href="https://github.com/oppia/oppia/pulls?q=is%3Apr+author%3Arohanmalhotracodes" target="_blank">↗</a></article>
+          <article class="reveal"><span>JUN — JUL 2025</span><div><h3>Bharat Electronics Limited</h3><p>Computer Vision Trainee</p></div><strong>0.92 F1<br>180 ms/frame</strong><i>↘</i></article>
+          <article class="reveal"><span>2023 — 2027</span><div><h3>Thapar Institute</h3><p>B.E. Computer Engineering</p></div><strong>Algorithms · systems<br>ML · engineering</strong><a href="https://www.thapar.edu" target="_blank">↗</a></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section projects" id="projects">
+      <div class="shell heading row reveal"><div><p>02 / SELECTED PROJECTS</p><h2>Built to be used,<br>measured and tested.</h2></div><div class="rail-buttons"><button id="prev" aria-label="Previous project">←</button><button id="next" aria-label="Next project">→</button></div></div>
+      <div class="project-rail" id="rail">
+        <a class="project-card acid" href="https://github.com/rohanmalhotracodes/omnisprint" target="_blank"><div><span>01</span><b>AI DEVTOOLS</b></div><div class="project-art"><i>OS</i></div><small>FASTAPI · REACT · GITHUB · CI</small><h3>OmniSprint</h3><p>Evidence-backed sprint risk intelligence across roadmaps, GitHub and CI.</p><footer><span>TOP 50 / 5,400+</span><b>↗</b></footer></a>
+        <a class="project-card blue" href="https://github.com/rohanmalhotracodes/Capstone" target="_blank"><div><span>02</span><b>ROBOTICS / IOT</b></div><div class="project-art"><i>SS</i></div><small>MQTT · FASTAPI · REACT</small><h3>Solar Sweeper</h3><p>Autonomous cleaning, hybrid soiling detection and live telemetry for solar arrays.</p><footer><span>4,184-PANEL SITE</span><b>↗</b></footer></a>
+        <a class="project-card coral" href="https://github.com/rohanmalhotracodes/smriti" target="_blank"><div><span>03</span><b>AI / KNOWLEDGE</b></div><div class="project-art"><i>SM</i></div><small>COGNEE · POSTGRES · FASTAPI</small><h3>Smriti</h3><p>A knowledge-oriented AI system with persistent, structured memory.</p><footer><span>FULL-STACK BUILD</span><b>↗</b></footer></a>
+        <a class="project-card lilac" href="https://github.com/rohanmalhotracodes/Collision-Detection-System" target="_blank"><div><span>04</span><b>COMPUTER VISION</b></div><div class="project-art"><i>CV</i></div><small>YOLO · DENSENET · KITTI</small><h3>Collision Detection</h3><p>Road-scene accident detection evaluated under real-time constraints.</p><footer><span>88% ACCURACY</span><b>↗</b></footer></a>
+      </div>
+    </section>
+
+    <section class="section shell" id="journey">
+      <div class="heading reveal"><p>03 / JOURNEY</p><h2>A timeline of<br>engineering in public.</h2></div>
+      <div class="timeline">
+        <article class="reveal"><time>2026 — NOW<small>CURRENT</small></time><i></i><div><span>OPEN SOURCE</span><h3>TrueForge contributor</h3><p>Working on the details users notice when they break: chat persistence, cancellation and sandbox behavior.</p></div></article>
+        <article class="reveal"><time>2026<small>5 MONTHS</small></time><i></i><div><span>PROJECT OWNERSHIP</span><h3>Oppia Foundation</h3><p>Full-stack regressions, TypeScript strictness, RTE behavior, API changes and technical documentation.</p></div></article>
+        <article class="reveal"><time>2025<small>INDUSTRY</small></time><i></i><div><span>COMPUTER VISION</span><h3>Bharat Electronics Limited</h3><p>Built and tuned a real-time accident-detection pipeline across model quality and inference latency.</p></div></article>
+        <article class="reveal"><time>2023 — 2027<small>EDUCATION</small></time><i></i><div><span>COMPUTER ENGINEERING</span><h3>TIET</h3><p>Algorithms, systems, machine learning, optimization and product engineering.</p></div></article>
+      </div>
+    </section>
+
+    <section class="section proof" id="proof"><div class="shell"><div class="heading reveal"><p>04 / PROOF</p><h2>Signals beyond<br>the résumé.</h2></div>
+      <div class="proof-grid">
+        <a class="proof-card feature reveal" href="https://lnkd.in/p/g2EciHZb" target="_blank"><span>UNSTOP · 2026</span><b>#8</b><h3>Unstoppable E-School Leader</h3><p>National Top 100 list.</p><i>VIEW RECOGNITION ↗</i></a>
+        <article class="proof-card reveal"><span>TCS CODEVITA</span><b>#57</b><h3>Global Rank</h3><p>Round 2 · 2025</p></article>
+        <article class="proof-card reveal"><span>YANDEX CODERUN</span><b>#87</b><h3>Global Rank</h3><p>Winter Challenge</p></article>
+        <article class="proof-card reveal"><span>ZS CAMPUS BEATS</span><b>Top 100</b><h3>PPO pathway</h3><p>National competition</p></article>
+        <article class="proof-card reveal"><span>AMAZON</span><b>Selected</b><h3>ML Summer School</h3><p>2025 cohort</p></article>
+      </div>
+      <div class="link-list reveal"><a href="https://180dcsrcc.in/pratyaksh-2025/" target="_blank"><span>WRITING</span><strong>Pratyaksh 2025 — published article</strong><b>↗</b></a><a href="https://leetcode.com/u/rohanmalhotracodes/" target="_blank"><span>ALGORITHMS</span><strong>Competitive programming profile</strong><b>↗</b></a><a href="https://github.com/rohanmalhotracodes" target="_blank"><span>CODE</span><strong>Projects and open-source work</strong><b>↗</b></a></div>
+    </div></section>
+
+    <section class="section shell toolkit"><div class="heading reveal"><p>05 / TOOLKIT</p><h2>Tools for shipping.</h2></div><div class="skills reveal"><article><span>01</span><h3>Languages</h3><p>C++ · Python · Java<br>JavaScript / TypeScript · SQL</p></article><article><span>02</span><h3>Product web</h3><p>React · FastAPI · Flask<br>Node.js · Postgres</p></article><article><span>03</span><h3>Systems</h3><p>Docker · Git · CI<br>MQTT · Linux · REST APIs</p></article><article><span>04</span><h3>ML / Vision</h3><p>NumPy · pandas · CNNs<br>YOLO · model evaluation</p></article></div></section>
+
+    <section class="contact section" id="contact"><div class="shell reveal"><p>06 / CONTACT</p><h2>Let’s build something<br><span>worth measuring.</span></h2><div><a href="mailto:rohanmalhotracodes@gmail.com">EMAIL ME →</a><p>Open to software engineering, developer tools,<br>open-source and systems-focused roles.</p></div></div></section>
+  </main>
+  <footer class="footer shell"><span>© 2026 ROHAN MALHOTRA</span><span>ENGINEERING · OPEN SOURCE · SYSTEMS</span><a href="#top">BACK TO TOP ↑</a></footer>
+  <script src="script.js"></script>
 </body>
 </html>
