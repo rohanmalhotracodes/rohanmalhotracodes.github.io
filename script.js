@@ -27,8 +27,19 @@ rail.addEventListener('pointermove',e=>{if(dragging)rail.scrollLeft=startScroll-
 rail.addEventListener('pointerup',()=>dragging=false);rail.addEventListener('pointercancel',()=>dragging=false);
 
 const navLinks=$$('.header nav a[href^="#"]');
-const sections=navLinks.map(link=>$(link.getAttribute('href'))).filter(Boolean);
-const spy=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){navLinks.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+entry.target.id))}}),{rootMargin:'-42% 0px -52%'});sections.forEach(s=>spy.observe(s));
+const navTargets=navLinks.map(link=>({link,target:$(link.getAttribute('href'))})).filter(item=>item.target);
+let spyFrame=0;
+const updateActiveNav=()=>{
+  const marker=scrollY+$('.header').offsetHeight+48;
+  let current=navTargets[0];
+  navTargets.forEach(item=>{if(item.target.getBoundingClientRect().top+scrollY<=marker)current=item});
+  navLinks.forEach(link=>link.classList.toggle('active',link===current.link));
+  spyFrame=0;
+};
+const requestNavUpdate=()=>{if(!spyFrame)spyFrame=requestAnimationFrame(updateActiveNav)};
+addEventListener('scroll',requestNavUpdate,{passive:true});
+addEventListener('resize',requestNavUpdate,{passive:true});
+updateActiveNav();
 
 const contactForm=$('#contactForm');
 if(contactForm){contactForm.addEventListener('submit',event=>{
