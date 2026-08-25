@@ -37,7 +37,7 @@ if(contactForm){contactForm.addEventListener('submit',event=>{
   const subject=encodeURIComponent(`Portfolio message from ${first} ${last}`);
   const body=encodeURIComponent(`From: ${first} ${last}\nReply to: ${email}\n\n${message}`);
   $('#formStatus').textContent='OPENING YOUR EMAIL CLIENT…';
-  window.location.href=`mailto:rohanmalhotracodes@gmail.com?subject=${subject}&body=${body}`;
+  window.location.href=`mailto:rohanmalhotra430@gmail.com?subject=${subject}&body=${body}`;
 });}
 
 const alphabet='ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789$%#@';
