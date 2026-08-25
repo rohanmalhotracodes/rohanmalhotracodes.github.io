@@ -25,3 +25,18 @@ const name=$('#heroName'),finalText=name.dataset.text;
 let frame=0;
 function scramble(){if(root.classList.contains('still')){name.innerHTML=finalText.replace('|','<br>');return}const progress=frame/20;name.innerHTML=[...finalText].map((c,i)=>c==='|'?'<br>':i<finalText.length*progress?c:alphabet[Math.floor(Math.random()*alphabet.length)]).join('');frame++;if(frame<=20)requestAnimationFrame(scramble)}
 setTimeout(scramble,180);
+
+// Verified public GitHub contribution calendar snapshot (25 Aug 2026).
+const calendar=$('#contributionCalendar'),months=$('#calendarMonths');
+if(calendar){
+  const levels=calendar.dataset.levels||'',start=new Date(calendar.dataset.start+'T00:00:00Z');
+  const monthNames=['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
+  let lastMonth=-1;
+  [...levels].forEach((level,index)=>{
+    const day=new Date(start);day.setUTCDate(start.getUTCDate()+index);
+    const cell=document.createElement('i');cell.dataset.level=level;cell.title=`${day.toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric',timeZone:'UTC'})} · activity level ${level}`;calendar.appendChild(cell);
+    if(day.getUTCMonth()!==lastMonth&&day.getUTCDate()<=7){
+      const label=document.createElement('span');label.textContent=monthNames[day.getUTCMonth()];label.style.left=(Math.floor(index/7)*14)+'px';months.appendChild(label);lastMonth=day.getUTCMonth();
+    }
+  });
+}
