@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 120" role="img" aria-labelledby="title">
+  <title id="title">Flipkart</title>
+  <rect width="420" height="120" fill="#fff"/>
+  <g transform="translate(12 9)">
+    <path d="M20 23h75l-8 78H28z" fill="#ffd814"/>
+    <path d="M35 7h48v23H35z" rx="5" fill="#2874f0"/>
+    <path d="M45 31h36l-2 14H58l-2 12h19l-3 14H54l-5 25H31z" fill="#2874f0"/>
+  </g>
+  <text x="122" y="76" fill="#2874f0" font-family="Arial,Helvetica,sans-serif" font-size="54" font-weight="700">Flipkart</text>
+</svg>
