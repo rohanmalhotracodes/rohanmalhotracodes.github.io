@@ -180,7 +180,8 @@ html{scroll-padding-top:110px}
 .header nav{margin-left:auto}
 .tech-logo{background:transparent;border:0;box-shadow:none;overflow:visible}
 .tech-logo svg,.tech-logo img{width:30px;height:30px}
-html:not(.dark) .marquee-set .tech-logo:nth-child(12) img,html:not(.dark) .marquee-set .tech-logo:nth-child(17) img{filter:invert(1)!important}
+.skills-marquee{background:#fff;color:#050505}
+.marquee-set .tech-logo:nth-child(12) img,.marquee-set .tech-logo:nth-child(17) img{filter:none!important}
 @media(max-width:760px){.tech-logo svg,.tech-logo img{width:26px;height:26px}}
 
 /* Clear settings control and larger Quick Proof marks */
