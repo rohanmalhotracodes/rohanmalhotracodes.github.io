@@ -1,0 +1,33 @@
+<svg viewBox="0 0 960 360" xmlns="http://www.w3.org/2000/svg">
+  <title>Solar Sweeper project banner</title>
+  <desc>Rows of solar panels with a rail-mounted cleaning unit</desc>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#dff5ff"/><stop offset="1" stop-color="#ffffff"/></linearGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#1374b8"/><stop offset="1" stop-color="#073b67"/></linearGradient>
+  </defs>
+  <rect width="960" height="360" fill="url(#sky)"/>
+  <circle cx="820" cy="74" r="39" fill="#ffd84d" stroke="#050505" stroke-width="8"/>
+  <g fill="url(#panel)" stroke="#050505" stroke-width="7" stroke-linejoin="round">
+    <path d="M70 104h236l-31 116H39z"/>
+    <path d="M362 104h236l-31 116H331z"/>
+    <path d="M654 104h236l-31 116H623z"/>
+  </g>
+  <g stroke="#bce7ff" stroke-width="4" opacity=".85">
+    <path d="M104 104 78 220M151 104l-26 116M198 104l-26 116M245 104l-26 116M396 104l-26 116M443 104l-26 116M490 104l-26 116M537 104l-26 116M688 104l-26 116M735 104l-26 116M782 104l-26 116M829 104l-26 116"/>
+    <path d="M55 162h235M347 162h235M639 162h235"/>
+  </g>
+  <g stroke="#050505" stroke-width="8" stroke-linecap="square">
+    <path d="M44 244h814"/>
+    <path d="m71 220-12 63M275 220l12 63M363 220l-12 63M567 220l12 63M655 220l-12 63M859 220l12 63"/>
+  </g>
+  <g transform="translate(415 226)">
+    <rect width="130" height="54" rx="4" fill="#ffffff" stroke="#050505" stroke-width="8"/>
+    <rect x="18" y="14" width="64" height="15" fill="#39d353" stroke="#050505" stroke-width="5"/>
+    <circle cx="27" cy="56" r="13" fill="#050505"/><circle cx="103" cy="56" r="13" fill="#050505"/>
+    <path d="M87 9v27M99 9v27M111 9v27" stroke="#1374b8" stroke-width="5"/>
+  </g>
+  <g font-family="Arial, Helvetica, sans-serif" fill="#050505">
+    <text x="70" y="326" font-size="38" font-weight="800" letter-spacing="2">SOLAR SWEEPER</text>
+    <text x="645" y="326" font-size="20" font-weight="700" letter-spacing="3">AUTONOMOUS · IOT</text>
+  </g>
+</svg>
