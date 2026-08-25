@@ -256,6 +256,10 @@ html{scroll-padding-top:110px}
 .achievement-logo img.achievement-logo-amazon{max-width:180px!important;max-height:52px!important}
 .achievement-logo img.achievement-logo-flipkart{max-width:174px!important;max-height:50px!important}
 .achievement-logo img.achievement-logo-coral{max-width:180px!important;max-height:52px!important}
+.achievement-logo img.achievement-logo-yandex{max-width:154px!important;max-height:50px!important}
+.achievement-logo img.achievement-logo-tcs{max-width:158px!important;max-height:50px!important}
+.achievement-logo img.achievement-logo-zs{max-width:166px!important;max-height:52px!important}
+.achievement-logo img.achievement-logo-wemakedevs{max-width:168px!important;max-height:54px!important}
 
 /* Center school and institute crests inside their square frames */
 .education-roadmap .journey-card .org-mark.square{display:grid!important;place-items:center!important;justify-self:center;align-self:start;padding:5px!important;overflow:hidden}
@@ -287,3 +291,4 @@ html{scroll-padding-top:110px}
 .linkedin-action:hover{background:var(--ink);color:var(--paper);transform:translate(-1px,-1px);box-shadow:6px 6px 0 var(--shadow)}
 
 @media(max-width:760px){.skills-marquee::before{padding:9px 11px;font-size:8px}.cv-download{min-width:160px}}
+@media(max-width:760px){.achievement-logo img.achievement-logo-yandex,.achievement-logo img.achievement-logo-tcs,.achievement-logo img.achievement-logo-zs,.achievement-logo img.achievement-logo-wemakedevs{max-width:126px!important;max-height:44px!important}}
