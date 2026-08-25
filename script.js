@@ -1,0 +1,16 @@
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const root=document.documentElement, settings=$('#settings'), cursor=$('#cursor');
+$('#settingsOpen').onclick=()=>settings.classList.add('open');
+$('#settingsClose').onclick=()=>settings.classList.remove('open');
+$('#theme').onchange=e=>root.classList.toggle('light',!e.target.checked);
+$('#motion').onchange=e=>root.classList.toggle('still',!e.target.checked);
+$('#cursorToggle').onchange=e=>cursor.classList.toggle('off',!e.target.checked);
+addEventListener('keydown',e=>{if(e.key==='Escape')settings.classList.remove('open')});
+addEventListener('pointermove',e=>{cursor.style.transform=`translate(${e.clientX}px,${e.clientY}px)`});
+$$('a,button,input').forEach(el=>{el.addEventListener('mouseenter',()=>cursor.classList.add('active'));el.addEventListener('mouseleave',()=>cursor.classList.remove('active'))});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)}}),{threshold:.1});
+$$('.reveal').forEach(el=>io.observe(el));
+const rail=$('#rail'); $('#next').onclick=()=>rail.scrollBy({left:Math.min(innerWidth*.72,620),behavior:'smooth'}); $('#prev').onclick=()=>rail.scrollBy({left:-Math.min(innerWidth*.72,620),behavior:'smooth'});
+const links=$$('.nav nav a');
+const sections=$$('section[id]');
+const spy=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id))}}),{rootMargin:'-45% 0px -45%'}); sections.forEach(s=>spy.observe(s));
