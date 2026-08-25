@@ -174,3 +174,11 @@ html{scroll-padding-top:110px}
 .radar-points circle{fill:var(--paper);stroke:#1f883d;stroke-width:3;vector-effect:non-scaling-stroke}
 .radar-copy{fill:var(--ink);font:700 9px 'Space Mono',monospace}.radar-copy .radar-value{font-size:14px}
 @media(max-width:760px){.github-calendar-header{align-items:flex-start}.github-calendar-header strong{font-size:12px}.calendar-layout{min-width:max-content}.calendar-footer{align-items:flex-start!important;flex-direction:column}.github-radar-card figcaption{align-items:flex-start;flex-direction:column}.contribution-radar{width:100%;margin-block:6px}.radar-copy{font-size:8px}.radar-copy .radar-value{font-size:12px}}
+
+/* Borderless logo ticker and precisely centered header eyes */
+.header-eyes{position:absolute;left:50%;transform:translateX(-50%);min-width:76px}
+.header nav{margin-left:auto}
+.tech-logo{background:transparent;border:0;box-shadow:none;overflow:visible}
+.tech-logo svg,.tech-logo img{width:30px;height:30px}
+html:not(.dark) .marquee-set .tech-logo:nth-child(12) svg,html:not(.dark) .marquee-set .tech-logo:nth-child(17) svg{filter:invert(1)!important}
+@media(max-width:760px){.tech-logo svg,.tech-logo img{width:26px;height:26px}}
