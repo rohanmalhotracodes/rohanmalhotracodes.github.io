@@ -1,8 +1,6 @@
-# Rohan Malhotra — Portfolio
+# Portfolio
 
 A responsive, monochrome engineering portfolio built to present open-source work, product-focused projects, technical experience, education, GitHub activity, and achievements in a single cohesive interface.
-
-**Live website:** [rohanmalhotracodes.github.io](https://rohanmalhotracodes.github.io/)
 
 ![Portfolio overview](assets/screenshots/portfolio-overview.jpg)
 
