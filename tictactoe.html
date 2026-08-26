@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Tic-Tac-Toe — Rohan Malhotra</title>
+  <style>
+    *{box-sizing:border-box} body{margin:0;background:#fff;color:#111827;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;min-height:100vh;display:grid;place-items:center;padding:24px}.shell{width:min(920px,100%);border:1px solid #e5e7eb;border-radius:28px;padding:32px;background:#fff;box-shadow:0 18px 60px rgba(17,24,39,.06)}.top{display:flex;justify-content:space-between;gap:24px;align-items:flex-start;margin-bottom:28px}.eyebrow{font:600 12px/1.2 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.14em;color:#6b7280;text-transform:uppercase}.title{font-size:clamp(34px,6vw,64px);line-height:.98;letter-spacing:-.045em;margin:10px 0 12px}.sub{color:#6b7280;margin:0}.back{color:#111827;text-decoration:none;border:1px solid #e5e7eb;border-radius:999px;padding:10px 14px;font-weight:600;white-space:nowrap}.content{display:grid;grid-template-columns:1fr 280px;gap:28px;align-items:start}.board{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.cell{aspect-ratio:1;border:1px solid #d1d5db;border-radius:18px;background:#fff;font-size:clamp(38px,8vw,72px);font-weight:700;color:#111827;cursor:pointer;transition:.16s ease}.cell:hover{background:#f9fafb;transform:translateY(-1px)}.cell:disabled{cursor:default}.side{border:1px solid #e5e7eb;border-radius:20px;padding:20px}.status{font-size:20px;font-weight:700;margin:4px 0 16px}.meta{color:#6b7280;font-size:14px;line-height:1.6}.actions{display:grid;gap:10px;margin-top:18px}.btn{border:0;border-radius:12px;padding:12px 14px;font-weight:700;cursor:pointer}.primary{background:#111827;color:#fff}.secondary{background:#f3f4f6;color:#111827}@media(max-width:720px){.content{grid-template-columns:1fr}.top{flex-direction:column}.back{align-self:flex-start}.shell{padding:22px}}
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <div class="top">
+      <div><div class="eyebrow">Rohan's profile game</div><h1 class="title">Tic-Tac-Toe.</h1><p class="sub">You are X. The browser is O. First to three wins.</p></div>
+      <a class="back" href="https://github.com/rohanmalhotracodes">GitHub profile ↗</a>
+    </div>
+    <section class="content">
+      <div class="board" id="board"></div>
+      <aside class="side">
+        <div class="eyebrow">Game status</div>
+        <div class="status" id="status">Your turn</div>
+        <div class="meta">The bot prioritizes winning moves, then blocks yours, then takes the center/corners. No sign-in, issue creation, or refresh needed.</div>
+        <div class="actions"><button class="btn primary" id="reset">New game</button><button class="btn secondary" id="botFirst">Let bot start</button></div>
+      </aside>
+    </section>
+  </main>
+<script>
+const boardEl=document.getElementById('board'),statusEl=document.getElementById('status');let board=Array(9).fill(''),over=false,locked=false;
+const wins=[[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+function winner(b){for(const [a,c,d] of wins)if(b[a]&&b[a]===b[c]&&b[a]===b[d])return b[a];return b.every(Boolean)?'draw':null}
+function render(){boardEl.innerHTML='';board.forEach((v,i)=>{const b=document.createElement('button');b.className='cell';b.textContent=v;b.disabled=!!v||over||locked;b.onclick=()=>play(i);boardEl.appendChild(b)})}
+function play(i){if(board[i]||over||locked)return;board[i]='X';afterMove('X')}
+function afterMove(){render();const w=winner(board);if(w)return finish(w);locked=true;statusEl.textContent='Bot is thinking…';setTimeout(botMove,240)}
+function scoreMove(sym){for(const [a,b,c] of wins){const line=[board[a],board[b],board[c]],idx=[a,b,c];if(line.filter(x=>x===sym).length===2&&line.includes(''))return idx[line.indexOf('')]}return -1}
+function botMove(){let i=scoreMove('O');if(i<0)i=scoreMove('X');if(i<0&&board[4]==='')i=4;if(i<0){const opts=[0,2,6,8].filter(x=>!board[x]);if(opts.length)i=opts[Math.floor(Math.random()*opts.length)]}if(i<0){const opts=board.map((v,j)=>v?'':j).filter(v=>v!=='');i=opts[Math.floor(Math.random()*opts.length)]}if(i!==undefined&&i>=0)board[i]='O';locked=false;render();const w=winner(board);if(w)finish(w);else statusEl.textContent='Your turn'}
+function finish(w){over=true;locked=false;statusEl.textContent=w==='draw'?'Draw game':w==='X'?'You win 🎉':'Bot wins';render()}
+function reset(bot=false){board=Array(9).fill('');over=false;locked=false;statusEl.textContent=bot?'Bot starts…':'Your turn';render();if(bot){locked=true;setTimeout(botMove,220)}}
+document.getElementById('reset').onclick=()=>reset(false);document.getElementById('botFirst').onclick=()=>reset(true);reset();
+</script>
+</body>
+</html>
