@@ -55,22 +55,56 @@ if(contactForm){contactForm.addEventListener('submit',async event=>{
 const alphabet='ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789$%#@';
 const name=$('#heroName'),finalText=name.dataset.text;
 let frame=0;
-function scramble(){if(root.classList.contains('still')){name.innerHTML=finalText.replace('|','<br>');return}const progress=frame/20;name.innerHTML=[...finalText].map((c,i)=>c==='|'?'<br>':i<finalText.length*progress?c:alphabet[Math.floor(Math.random()*alphabet.length)]).join('');frame++;if(frame<=20)requestAnimationFrame(scramble)}
+function scramble(){const progress=frame/20;name.innerHTML=[...finalText].map((c,i)=>c==='|'?'<br>':i<finalText.length*progress?c:alphabet[Math.floor(Math.random()*alphabet.length)]).join('');frame++;if(frame<=20)requestAnimationFrame(scramble)}
 setTimeout(scramble,180);
 
-// Verified public GitHub contribution calendar snapshot (25 Aug 2026).
+// Render the bundled snapshot immediately, then replace it with the scheduled refresh.
 const calendar=$('#contributionCalendar'),months=$('#calendarMonths');
-if(calendar){
-  const levels=calendar.dataset.levels||'',start=new Date(calendar.dataset.start+'T00:00:00Z');
+const formatActivityDate=date=>new Date(`${date}T00:00:00Z`).toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric',timeZone:'UTC'}).toUpperCase();
+const renderCalendar=days=>{
+  if(!calendar||!days.length)return;
+  calendar.replaceChildren();months.replaceChildren();
   const monthNames=['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
-  let lastMonth=-1;
-  [...levels].forEach((level,index)=>{
-    const day=new Date(start);day.setUTCDate(start.getUTCDate()+index);
-    const cell=document.createElement('i');cell.dataset.level=level;cell.title=`${day.toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric',timeZone:'UTC'})} · activity level ${level}`;calendar.appendChild(cell);
-    if(day.getUTCMonth()!==lastMonth&&day.getUTCDate()<=7){
+  const displayYear=new Date(`${days.at(-1).date}T00:00:00Z`).getUTCFullYear();
+  let lastMonth=-1,lastYear=-1;
+  days.forEach(({date,level,count},index)=>{
+    const day=new Date(`${date}T00:00:00Z`);
+    const cell=document.createElement('i');cell.dataset.level=level;cell.title=`${formatActivityDate(date)} · ${Number(count)||0} contribution${Number(count)===1?'':'s'}`;calendar.appendChild(cell);
+    if(day.getUTCFullYear()===displayYear&&(day.getUTCFullYear()!==lastYear||day.getUTCMonth()!==lastMonth)){
       const label=document.createElement('span');label.textContent=monthNames[day.getUTCMonth()];label.style.left=(Math.floor(index/7)*14)+'px';months.appendChild(label);lastMonth=day.getUTCMonth();
+      lastYear=day.getUTCFullYear();
     }
   });
+};
+const renderContributionMix=mix=>{
+  if(!mix)return;
+  const values={commits:Number(mix.commits)||0,pullRequests:Number(mix.pullRequests)||0,issues:Number(mix.issues)||0,codeReviews:Number(mix.codeReviews)||0};
+  Object.entries(values).forEach(([metric,value])=>{const label=$(`[data-metric="${metric}"]`);if(label)label.textContent=`${value}%`});
+  const points=[[260-1.2*values.commits,150],[260,150+1.08*values.pullRequests],[260+1.2*values.issues,150],[260,150-1.08*values.codeReviews]];
+  const radar=$('.contribution-radar'),area=$('.radar-area',radar),circles=$$('.radar-points circle',radar);
+  area.setAttribute('d',`M${points.map(point=>point.map(value=>value.toFixed(1)).join(' ')).join(' L')}Z`);
+  points.forEach(([x,y],index)=>{circles[index]?.setAttribute('cx',x.toFixed(1));circles[index]?.setAttribute('cy',y.toFixed(1))});
+  radar.setAttribute('aria-label',`Contribution mix: ${values.commits} percent commits, ${values.pullRequests} percent pull requests, ${values.issues} percent issues and ${values.codeReviews} percent code reviews`);
+};
+if(calendar){
+  const start=new Date(`${calendar.dataset.start}T00:00:00Z`);
+  const fallbackDays=[...(calendar.dataset.levels||'')].map((level,index)=>{const day=new Date(start);day.setUTCDate(start.getUTCDate()+index);return{date:day.toISOString().slice(0,10),level:Number(level),count:0}});
+  renderCalendar(fallbackDays);
+  const activityCacheKey=Math.floor(Date.now()/3600000);
+  fetch(`assets/data/github-activity.json?v=${activityCacheKey}`,{cache:'no-store'})
+    .then(response=>{if(!response.ok)throw new Error('Activity refresh unavailable');return response.json()})
+    .then(activity=>{
+      if(!Array.isArray(activity.days)||!activity.days.length)return;
+      renderCalendar(activity.days);
+      $('#githubCalendarTitle').textContent=`CONTRIBUTION CALENDAR · ${activity.year}`;
+      $('#githubCalendarRange').textContent=`${formatActivityDate(activity.rangeStart)} — ${formatActivityDate(activity.rangeEnd)}`;
+      const summary=[];
+      if(Number.isFinite(activity.totalContributions))summary.push(`${activity.totalContributions} CONTRIBUTIONS`);
+      if(Number.isFinite(activity.repositoryCount))summary.push(`${activity.repositoryCount} REPOSITORIES`);
+      if(summary.length)$('#githubContributionSummary').textContent=summary.join(' · ');
+      renderContributionMix(activity.mix);
+    })
+    .catch(()=>{});
 }
 
 const headerEyes=$$('#headerEyes .header-eye');

@@ -7,7 +7,7 @@
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg?v=20260825-30">
   <link rel="shortcut icon" href="assets/favicon.svg?v=20260825-30">
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="styles.css?v=20260825-39">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="styles.css?v=20260827-1">
 </head>
 <body>
   <div class="bg-words" aria-hidden="true"><span>BUILD</span><span>DEBUG</span><span>SHIP</span><span>SYSTEMS</span><span>OPEN_SOURCE</span><span>MEASURE</span><span>API</span><span>RUNTIME</span><span>TRACE</span><span>DEPLOY</span><span>VISION</span><span>DATA</span></div>
@@ -16,7 +16,7 @@
     <aside class="settings" id="settings" aria-label="Display settings"><div class="settings-head"><strong>// SETTINGS</strong><button id="settingsClose" aria-label="Close settings">×</button></div><div class="setting-row"><span>APPEARANCE</span><div class="theme-options" role="group" aria-label="Color theme"><button id="brightMode" class="active" type="button">LIGHT</button><button id="darkMode" type="button">DARK</button></div></div><label>BACKGROUND MOTION <input type="checkbox" id="motionToggle" checked></label></aside>
     <main>
       <section class="hero">
-        <div class="intro"><span class="spark">＋</span><h1 id="heroName" data-text="ROHAN|MALHOTRA">ROHAN<br>MALHOTRA</h1><b class="tagline">Portfolio // Computer Engineer | Open-source contributor</b><p>I turn ambitious ideas into reliable software—from open-source developer tools and product systems to real-time computer vision.</p><div class="actions"><a class="black-button cv-download" href="assets/Rohan-Malhotra-CV.pdf" download="Rohan-Malhotra-CV.pdf">VIEW CV ↓</a></div></div>
+        <div class="intro"><span class="spark">＋</span><h1 id="heroName" data-text="ROHAN|MALHOTRA">ROHAN<br>MALHOTRA</h1><b class="tagline">Portfolio // Computer Engineer | Open-source contributor</b><p>I turn ambitious ideas into reliable software—from open-source developer tools and product systems to real-time computer vision.</p><div class="actions"><a class="white-button cv-download" href="assets/Rohan-Malhotra-CV.pdf" download="Rohan-Malhotra-CV.pdf">VIEW CV ↓</a></div></div>
         <div class="quick" id="stats"><h2>// QUICK PROOF</h2><div class="metric"><b>12+</b><span>MERGED OPEN-SOURCE<br>PRS</span></div><div class="metric"><b>14+</b><span>OPEN-SOURCE ISSUES<br>SOLVED</span></div><div class="metric"><b>57</b><span>CODEVITA<br>GLOBAL RANK</span></div><div class="metric"><b>87</b><span>YANDEX<br>GLOBAL RANK</span></div><div class="proof-logos"><span><img src="assets/logos/oppia.png?v=20260825-3" alt="Oppia logo"></span><span><img class="tf-light" src="assets/logos/truefoundry-light.jpeg?v=20260825-3" alt="TrueFoundry logo"><img class="tf-dark" src="assets/logos/truefoundry-dark.png?v=20260825-3" alt="TrueFoundry logo for dark mode"></span><span><img src="assets/logos/bel.jpeg?v=20260825-3" alt="Bharat Electronics logo"></span><span><img src="assets/logos/tiet.jpeg?v=20260825-3" alt="TIET logo"></span></div></div>
       </section>
       <section class="projects-section" id="projects"><div class="section-bar"><h2>&gt;_ PROJECTS</h2><div><button id="projectPrev">←</button><button id="projectNext">→</button><a href="https://github.com/rohanmalhotracodes" target="_blank">VIEW ALL PROJECTS →</a></div></div><div class="project-rail" id="projectRail">
@@ -27,9 +27,9 @@
         <div class="section-bar"><h2>&gt;_ GITHUB ACTIVITY</h2><a href="https://github.com/rohanmalhotracodes" target="_blank" rel="noopener">VIEW PROFILE ↗</a></div>
         <div class="github-dashboard">
         <div class="github-calendar-card">
-          <header class="github-calendar-header"><div><strong>CONTRIBUTION CALENDAR · 2026</strong><span>01 JAN 2026 — 25 AUG 2026</span></div><div class="calendar-legend"><span>LESS</span><i data-level="0"></i><i data-level="1"></i><i data-level="2"></i><i data-level="3"></i><i data-level="4"></i><span>MORE</span></div></header>
+          <header class="github-calendar-header"><div><strong id="githubCalendarTitle">CONTRIBUTION CALENDAR · 2026</strong><span id="githubCalendarRange">01 JAN 2026 — 25 AUG 2026</span></div><div class="calendar-legend"><span>LESS</span><i data-level="0"></i><i data-level="1"></i><i data-level="2"></i><i data-level="3"></i><i data-level="4"></i><span>MORE</span></div></header>
           <div class="calendar-scroll"><div class="calendar-layout"><div class="calendar-weekdays" aria-hidden="true"><span>MON</span><span>WED</span><span>FRI</span></div><div class="calendar-map"><div class="calendar-months" id="calendarMonths"></div><div class="contribution-calendar" id="contributionCalendar" data-start="2025-12-28" data-levels="0000000000000010010010113100102100000200000001111002100000120111111111010011110101110011111000001001011010111100100100111101000010010000000001000000011102100000000000000000000000000000000001101100000000000000000000000000001000010000110111014"></div></div></div></div>
-          <footer class="calendar-footer"><span>CONTRIBUTED TO 38 REPOSITORIES</span><span>OPEN SOURCE · PRODUCT SYSTEMS · DEVELOPER TOOLS</span></footer>
+          <footer class="calendar-footer"><span id="githubContributionSummary">PUBLIC GITHUB ACTIVITY</span><span>OPEN SOURCE · PRODUCT SYSTEMS · DEVELOPER TOOLS</span></footer>
         </div>
         <figure class="github-radar-card">
           <figcaption><b>CONTRIBUTION MIX</b><span>COMMITS · PULL REQUESTS · ISSUES · CODE REVIEWS</span></figcaption>
@@ -37,7 +37,7 @@
             <g class="radar-grid"><path d="M260 42 380 150 260 258 140 150Z"/><path d="M260 78 340 150 260 222 180 150Z"/><line x1="260" y1="42" x2="260" y2="258"/><line x1="140" y1="150" x2="380" y2="150"/></g>
             <path class="radar-area" d="M172.4 150 260 170.5 264.8 150 260 145.7Z"/>
             <g class="radar-points"><circle cx="172.4" cy="150" r="5"/><circle cx="260" cy="170.5" r="5"/><circle cx="264.8" cy="150" r="5"/><circle cx="260" cy="145.7" r="5"/></g>
-            <g class="radar-copy"><text x="260" y="18" text-anchor="middle" class="radar-value">4%</text><text x="260" y="32" text-anchor="middle">CODE REVIEWS</text><text x="409" y="146" text-anchor="start" class="radar-value">4%</text><text x="409" y="160" text-anchor="start">ISSUES</text><text x="260" y="282" text-anchor="middle" class="radar-value">19%</text><text x="260" y="296" text-anchor="middle">PULL REQUESTS</text><text x="111" y="146" text-anchor="end" class="radar-value">73%</text><text x="111" y="160" text-anchor="end">COMMITS</text></g>
+            <g class="radar-copy"><text x="260" y="18" text-anchor="middle" class="radar-value" data-metric="codeReviews">4%</text><text x="260" y="32" text-anchor="middle">CODE REVIEWS</text><text x="409" y="146" text-anchor="start" class="radar-value" data-metric="issues">4%</text><text x="409" y="160" text-anchor="start">ISSUES</text><text x="260" y="282" text-anchor="middle" class="radar-value" data-metric="pullRequests">19%</text><text x="260" y="296" text-anchor="middle">PULL REQUESTS</text><text x="111" y="146" text-anchor="end" class="radar-value" data-metric="commits">73%</text><text x="111" y="160" text-anchor="end">COMMITS</text></g>
           </svg>
         </figure>
         </div>
@@ -133,5 +133,5 @@
     <footer><span>&gt;_ BUILDING IDEAS. WRITING CODE. MEASURING OUTCOMES.</span><span>© 2026 ROHAN MALHOTRA</span></footer>
   </div>
   <a class="to-top" href="#top">↑ TOP</a>
-  <script src="script.js?v=20260825-31"></script>
+  <script src="script.js?v=20260827-1"></script>
 </body></html>
