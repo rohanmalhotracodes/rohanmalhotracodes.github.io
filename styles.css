@@ -407,9 +407,9 @@ html{scroll-padding-top:110px}
   .education-roadmap .education-timeline time>span{display:block;white-space:nowrap}
 }
 
-/* Match the project-card lift on Quick Proof and the clickable CV control. */
-.quick,.cv-download{box-shadow:none;transition:transform .15s,box-shadow .15s}
-.quick:hover,.cv-download:hover,.cv-download:focus-visible{transform:none;box-shadow:7px 7px 0 var(--shadow)}
+/* Reuse the project-card lift across dashboard panels, headings and roadmaps. */
+.quick,.cv-download,.github-calendar-card,.github-radar-card,.journey-card,.section-bar h2,.big-title{box-shadow:none;transition:transform .15s,box-shadow .15s}
+.quick:hover,.cv-download:hover,.cv-download:focus-visible,.github-calendar-card:hover,.github-radar-card:hover,.journey-card:hover,.journey-card:focus-within,.section-bar h2:hover,.big-title:hover{transform:none;box-shadow:7px 7px 0 var(--shadow)}
 .cv-download{background:var(--paper);color:var(--ink);cursor:pointer}
 
-@media(prefers-reduced-motion:reduce){.quick,.cv-download{transition:none}}
+@media(prefers-reduced-motion:reduce){.quick,.cv-download,.github-calendar-card,.github-radar-card,.journey-card,.section-bar h2,.big-title{transition:none}}
