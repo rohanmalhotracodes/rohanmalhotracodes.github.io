@@ -101,7 +101,7 @@ Set `GITHUB_USERNAME` only if you are adapting the site for another public profi
 | `assets/data/github-activity.json` | Generated activity snapshot consumed by the browser |
 | `assets/logos/` and `assets/tech/` | Organization, project, and technology artwork |
 | `assets/screenshots/` | Current README previews |
-| `assets/Rohan-Malhotra-CV.pdf` | Downloadable CV |
+| `assets/Rohan-Malhotra-Resume.pdf` | Downloadable résumé |
 
 ## Make it your own
 
