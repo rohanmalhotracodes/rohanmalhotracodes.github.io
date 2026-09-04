@@ -416,3 +416,30 @@ html{scroll-padding-top:110px}
 .cv-download{background:var(--paper);color:var(--ink);cursor:pointer}
 
 @media(prefers-reduced-motion:reduce){.quick,.project-card,.github-calendar-card,.github-radar-card,.journey-card,.achievement-cards>a,.achievement-cards>article,.contact-form,.contact-panels article,.cv-download{transition:none}}
+
+/* Keep standalone and nested actions visually consistent with the card system. */
+.cv-download{
+  min-width:180px;
+  min-height:50px;
+  padding-inline:24px;
+  border:2px solid var(--ink);
+  line-height:1;
+  white-space:nowrap;
+  background:var(--paper);
+  color:var(--ink);
+  box-shadow:none;
+}
+
+.contact-submit,
+.contact-action,
+.linkedin-action,
+.contact-submit:hover,
+.contact-submit:focus-visible,
+.contact-submit:disabled,
+.contact-action:hover,
+.contact-action:focus-visible,
+.linkedin-action:hover,
+.linkedin-action:focus-visible{
+  transform:none;
+  box-shadow:none;
+}
