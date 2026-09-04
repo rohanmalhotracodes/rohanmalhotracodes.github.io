@@ -256,7 +256,6 @@ html{scroll-padding-top:110px}
 }
 
 /* Clear technology context above the moving logo strip */
-.skills-marquee::before{content:">_ TOOLS & TECHNOLOGIES I WORK WITH";display:block;padding:10px 16px;border-bottom:2px solid var(--ink);background:var(--paper);color:var(--ink);font-size:10px;font-weight:700;letter-spacing:.1em;white-space:normal}
 
 /* Unambiguous settings and contact symbols */
 .settings-icon{width:23px!important;height:23px!important;fill:currentColor!important;stroke:none!important}
@@ -265,7 +264,6 @@ html{scroll-padding-top:110px}
 .linkedin-action{background:var(--paper);color:var(--ink)}
 .linkedin-action:hover{background:var(--ink);color:var(--paper);transform:translate(-1px,-1px);box-shadow:6px 6px 0 var(--shadow)}
 
-@media(max-width:760px){.skills-marquee::before{padding:9px 11px;font-size:8px}}
 @media(max-width:760px){.achievement-logo img.achievement-logo-yandex,.achievement-logo img.achievement-logo-tcs,.achievement-logo img.achievement-logo-zs,.achievement-logo img.achievement-logo-wemakedevs{max-width:126px!important;max-height:44px!important}}
 
 /* Stronger ambient engineering backdrop, still controlled by the motion setting */
