@@ -484,3 +484,70 @@ html{scroll-padding-top:110px}
 .journey-card .oppia-mark img{display:block!important;width:40px!important;height:40px!important;margin:auto!important;object-fit:contain!important;object-position:center!important}
 
 @media(prefers-reduced-motion:reduce){.quick,.project-card,.github-calendar-card,.github-radar-card,.journey-card,.achievement-cards>a,.achievement-cards>article,.contact-form,.contact-panels article,.white-button{transition:none}}
+
+
+/* Feedback pass: reduce background noise and add deliberate visual hierarchy */
+:root{
+  --accent:#2563eb;
+  --accent-soft:#eef4ff;
+}
+.dark{
+  --accent:#8fb3ff;
+  --accent-soft:#121a2a;
+}
+
+/* The decorative word cloud competed with an already text-rich layout. */
+.bg-words{display:none!important}
+
+/* Keep motion control meaningful by applying it to the skills ticker. */
+.background-still .marquee-track{
+  -webkit-animation-play-state:paused!important;
+  animation-play-state:paused!important;
+}
+
+/* One controlled accent creates hierarchy without breaking the monochrome system. */
+.brand b,
+.tagline{
+  background:var(--accent);
+  color:#fff;
+}
+
+.intro .spark,
+.metric b,
+.section-cta,
+.project-action,
+.journey-card strong,
+.achievements-section>.section-bar>span{
+  color:var(--accent);
+}
+
+.actions .white-button{
+  border-color:var(--accent);
+  box-shadow:4px 4px 0 var(--accent);
+}
+.actions .white-button:hover{
+  background:var(--accent);
+  color:#fff;
+  transform:translate(-1px,-1px);
+}
+
+.header nav a.active{
+  border-color:var(--accent);
+  box-shadow:3px 3px 0 var(--accent);
+}
+
+.project-card:hover,
+.achievement-cards>a:hover{
+  box-shadow:7px 7px 0 var(--accent);
+}
+
+.section-cta:hover,
+.project-action:hover{
+  text-decoration:underline;
+  text-decoration-thickness:2px;
+  text-underline-offset:3px;
+}
+
+@media(max-width:760px){
+  .actions .white-button{box-shadow:3px 3px 0 var(--accent)}
+}
