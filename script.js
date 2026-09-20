@@ -1,6 +1,6 @@
 const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
 const root=document.documentElement,settings=$('#settings');
-const settingsOpen=$('#settingsOpen'),brightMode=$('#brightMode'),darkMode=$('#darkMode'),motionToggle=$('#motionToggle');
+const settingsOpen=$('#settingsOpen'),brightMode=$('#brightMode'),darkMode=$('#darkMode');
 const setTheme=theme=>{
   const dark=theme==='dark';
   root.classList.toggle('dark',dark);
@@ -9,13 +9,10 @@ const setTheme=theme=>{
   localStorage.setItem('portfolio-theme',dark?'dark':'bright');
 };
 setTheme(localStorage.getItem('portfolio-theme')==='dark'?'dark':'bright');
-const motionEnabled=localStorage.getItem('portfolio-motion')!=='off';
-root.classList.toggle('background-still',!motionEnabled);motionToggle.checked=motionEnabled;
 settingsOpen.addEventListener('click',()=>{const open=settings.classList.toggle('open');settingsOpen.setAttribute('aria-expanded',String(open))});
 $('#settingsClose').addEventListener('click',()=>{settings.classList.remove('open');settingsOpen.setAttribute('aria-expanded','false')});
 brightMode.addEventListener('click',()=>setTheme('bright'));
 darkMode.addEventListener('click',()=>setTheme('dark'));
-motionToggle.addEventListener('change',event=>{root.classList.toggle('background-still',!event.target.checked);localStorage.setItem('portfolio-motion',event.target.checked?'on':'off')});
 addEventListener('keydown',e=>{if(e.key==='Escape'){settings.classList.remove('open');settingsOpen.setAttribute('aria-expanded','false')}});
 
 const rail=$('#projectRail');
