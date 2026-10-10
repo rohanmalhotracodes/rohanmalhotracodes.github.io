@@ -20,6 +20,7 @@ main{display:flex;flex-direction:column}.hero{order:1}.journey-skills{order:2}.p
   letter-spacing:-.08em;
   color:var(--ink);
 }
+.contact-panels .linkedin-action + .linkedin-action{margin-top:14px}
 
 /* Roadmaps, GitHub activity and achievement system */
 main{display:flex;flex-direction:column}.hero{order:1}.journey-skills{order:2}.projects-section{order:3}.github-activity{order:4}.achievements-section{order:5}.education-roadmap{padding:20px}.education-roadmap .timeline{margin-top:20px}
