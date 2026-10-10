@@ -13,13 +13,9 @@ main{display:flex;flex-direction:column}.hero{order:1}.journey-skills{order:2}.p
 .tf-dark{display:none!important}.dark .tf-light{display:none!important}.dark .tf-dark{display:block!important}.dark .journey-card .org-mark img{filter:none}.journey-card{grid-template-columns:76px 1fr}.journey-card .org-mark{width:70px;height:56px;padding:5px}.journey-card .org-mark.square{width:56px}.journey-card .org-mark img{width:100%;height:100%;object-fit:contain;filter:none}
 @media(max-width:760px){.journey-card{grid-template-columns:1fr}.journey-card .org-mark{margin-bottom:4px}}
 
-/* Text-only organization marks retain the site's monochrome visual language. */
-.journey-card .org-mark.letter-mark span{
-  display:block;
-  font:700 18px/1 'IBM Plex Mono',monospace;
-  letter-spacing:-.08em;
-  color:var(--ink);
-}
+/* Official organization marks use the same square frames as existing experience cards. */
+.journey-card .org-mark.brand-mark img{object-fit:contain}
+.dark .journey-card .org-mark.brand-mark img.docsgpt-logo{filter:invert(1)}
 .contact-panels .linkedin-action + .linkedin-action{margin-top:14px}
 
 /* Roadmaps, GitHub activity and achievement system */
