@@ -14,12 +14,20 @@ The interface is intentionally monochrome and brutalist, but the experience is n
 
 ## What is inside
 
-- **Selected work:** OmniSprint, now a 3× hackathon winner, and Solar Sweeper, an autonomous solar-panel cleaning system.
-- **Open-source experience:** contribution work across TrueForge / TrueFoundry and the Oppia Foundation, with direct links to merged and open pull requests.
+- **Selected work:** OmniSprint (3× hackathon winner), Solar Sweeper (autonomous solar-panel cleaning), and RoofGrid (interactive rooftop solar planning).
+- **Open-source experience:** GitLab, Kestra, DocsGPT, TrueForge / TrueFoundry, and Oppia Foundation, including merged GitLab MRs, merged GitHub PRs, and work currently in review—with direct links to the changes.
 - **Education:** a compact timeline covering my Computer Engineering degree and school milestones.
-- **Proof, not filler:** merged PRs, resolved issues, competition ranks, hackathon results, selections, and published work.
+- **Proof, not filler:** 25+ verified merged open-source PRs/MRs as of October 2026, resolved issues, competition ranks, hackathon results, selections, and published work.
 - **GitHub activity:** a contribution calendar, repository total, and contribution mix refreshed automatically every six hours.
 - **Ways to connect:** downloadable CV, LinkedIn profile, direct email, and a contact form.
+
+## Open-source contribution highlights
+
+- **GitLab:** [MR !4427](https://gitlab.com/gitlab-org/quality/triage-ops/-/merge_requests/4427) merged into `gitlab-org/quality/triage-ops`, extending the AI issue labeller to Duo Developer issues.
+- **Kestra:** 3 merged PRs in core UI/tests, including [scroll-position restoration coverage](https://github.com/kestra-io/kestra/pull/20250); ongoing work on an [OpenAPI breaking-change guardian](https://github.com/kestra-io/blueprints/pull/862) and [Airbyte sync metadata](https://github.com/kestra-io/plugin-airbyte/pull/190).
+- **DocsGPT:** 2 PRs currently in review for [embedding-input safety](https://github.com/arc53/DocsGPT/pull/3009) and [knowledge-source search query encoding](https://github.com/arc53/DocsGPT/pull/3008).
+- **TrueForge:** 4 merged PRs covering chat deletion, Helm/Kubernetes security defaults, and developer documentation.
+- **Oppia:** 17 merged PRs across the main platform and web developer documentation, spanning TypeScript, frontend/backend quality, rich-text tooling, and accessibility.
 
 ## A closer look
 
@@ -118,6 +126,7 @@ The site is served from the `main` branch with GitHub Pages. Every accepted chan
 ## Contact
 
 - [GitHub](https://github.com/rohanmalhotracodes)
+- [GitLab](https://gitlab.com/rohanmalhotra430)
 - [LinkedIn](https://www.linkedin.com/in/rohanmalhotracodes)
 - [Email](mailto:rohanmalhotra430@gmail.com)
 
