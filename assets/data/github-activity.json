@@ -3,13 +3,13 @@
   "year": 2026,
   "rangeStart": "2026-01-01",
   "rangeEnd": "2026-11-24",
-  "totalContributions": 1384,
-  "repositoryCount": 65,
+  "totalContributions": 1224,
+  "repositoryCount": 60,
   "mix": {
-    "commits": 53,
-    "pullRequests": 8,
-    "issues": 36,
-    "codeReviews": 3
+    "commits": 46,
+    "pullRequests": 9,
+    "issues": 41,
+    "codeReviews": 4
   },
   "days": [
     {
@@ -134,7 +134,7 @@
     },
     {
       "date": "2026-01-21",
-      "level": 2,
+      "level": 1,
       "count": 20
     },
     {
@@ -199,7 +199,7 @@
     },
     {
       "date": "2026-02-03",
-      "level": 2,
+      "level": 1,
       "count": 12
     },
     {
@@ -1190,7 +1190,7 @@
     {
       "date": "2026-08-20",
       "level": 1,
-      "count": 3
+      "count": 1
     },
     {
       "date": "2026-08-21",
@@ -1215,17 +1215,17 @@
     {
       "date": "2026-08-25",
       "level": 4,
-      "count": 250
+      "count": 86
     },
     {
       "date": "2026-08-26",
-      "level": 2,
-      "count": 17
+      "level": 1,
+      "count": 16
     },
     {
       "date": "2026-08-27",
-      "level": 2,
-      "count": 13
+      "level": 1,
+      "count": 10
     },
     {
       "date": "2026-08-28",
@@ -1265,12 +1265,12 @@
     {
       "date": "2026-09-04",
       "level": 1,
-      "count": 10
+      "count": 5
     },
     {
       "date": "2026-09-05",
       "level": 1,
-      "count": 8
+      "count": 4
     },
     {
       "date": "2026-09-06",
@@ -1310,12 +1310,12 @@
     {
       "date": "2026-09-13",
       "level": 1,
-      "count": 2
+      "count": 1
     },
     {
       "date": "2026-09-14",
       "level": 1,
-      "count": 2
+      "count": 1
     },
     {
       "date": "2026-09-15",
@@ -1330,22 +1330,22 @@
     {
       "date": "2026-09-17",
       "level": 1,
-      "count": 3
+      "count": 5
     },
     {
       "date": "2026-09-18",
       "level": 1,
-      "count": 2
+      "count": 4
     },
     {
       "date": "2026-09-19",
       "level": 4,
-      "count": 40
+      "count": 68
     },
     {
       "date": "2026-09-20",
-      "level": 4,
-      "count": 36
+      "level": 2,
+      "count": 38
     },
     {
       "date": "2026-09-21",
@@ -1380,7 +1380,7 @@
     {
       "date": "2026-09-27",
       "level": 1,
-      "count": 2
+      "count": 1
     },
     {
       "date": "2026-09-28",
@@ -1444,8 +1444,8 @@
     },
     {
       "date": "2026-10-10",
-      "level": 3,
-      "count": 24
+      "level": 1,
+      "count": 13
     },
     {
       "date": "2026-10-11",
@@ -1560,12 +1560,12 @@
     {
       "date": "2026-11-02",
       "level": 1,
-      "count": 8
+      "count": 1
     },
     {
       "date": "2026-11-03",
-      "level": 1,
-      "count": 1
+      "level": 0,
+      "count": 0
     },
     {
       "date": "2026-11-04",
@@ -1574,17 +1574,17 @@
     },
     {
       "date": "2026-11-05",
-      "level": 2,
+      "level": 1,
       "count": 17
     },
     {
       "date": "2026-11-06",
-      "level": 4,
+      "level": 2,
       "count": 38
     },
     {
       "date": "2026-11-07",
-      "level": 3,
+      "level": 2,
       "count": 26
     },
     {
@@ -1594,17 +1594,17 @@
     },
     {
       "date": "2026-11-09",
-      "level": 2,
+      "level": 1,
       "count": 20
     },
     {
       "date": "2026-11-10",
-      "level": 3,
+      "level": 2,
       "count": 23
     },
     {
       "date": "2026-11-11",
-      "level": 2,
+      "level": 1,
       "count": 12
     },
     {
@@ -1619,8 +1619,8 @@
     },
     {
       "date": "2026-11-14",
-      "level": 2,
-      "count": 20
+      "level": 1,
+      "count": 18
     },
     {
       "date": "2026-11-15",
@@ -1649,13 +1649,13 @@
     },
     {
       "date": "2026-11-20",
-      "level": 3,
+      "level": 1,
       "count": 21
     },
     {
       "date": "2026-11-21",
-      "level": 2,
-      "count": 11
+      "level": 1,
+      "count": 17
     },
     {
       "date": "2026-11-22",
@@ -1670,7 +1670,7 @@
     {
       "date": "2026-11-24",
       "level": 1,
-      "count": 2
+      "count": 5
     }
   ]
 }
